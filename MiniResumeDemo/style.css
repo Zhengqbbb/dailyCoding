@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(./imgs/bg.jpg) no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+}
+
+.box {
+  width: 450px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  text-align: center;
+  margin: auto;
+  margin-top: 5%;
+  color: white;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+
+}
+
+.box-img {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+}
+
+.box h1 {
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: 100;
+}
+
+.box h5 {
+  font-size: 25px;
+  letter-spacing: 2px;
+  font-weight: 90;
+}
+
+.box p {
+  text-align: justify;
+}
+
+.icon {
+  font-family: FontAwesome;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.box li {
+  display: inline-block;
+  margin: 6px;
+  list-style: none;
+}
+
+.box li a {
+  color: white;
+  text-decoration: none;
+  font-size: 60px;
+  transition: all ease-in-out 250ms;
+}
+
+.box li a:hover {
+  color: #b9b9b9;
+}
