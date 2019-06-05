@@ -25,7 +25,8 @@
             border: 0.5px solid #7c7b7b;
             border-radius: 25px;
         }
-        header{
+
+        header {
             padding-top: 40px;
         }
 
@@ -51,12 +52,13 @@
 
         .content ul {
             overflow: hidden;
-            margin-top: 40px;
-            margin-left: 160px;
+            margin: 40px 0 0 160px;
+            /* margin-top: 40px ;
+            margin-left: 160px; */
         }
 
         .content li {
-            font-weight: 200;
+            font-weight: 300;
         }
 
         code {
@@ -89,7 +91,7 @@
             line-height: 30px;
             font-size: 18px;
             font-weight: 500;
-            margin: 10px;  
+            margin: 10px;
             transition: all ease-in-out 250ms;
         }
 
@@ -101,8 +103,18 @@
         span {
             display: inline-block;
             color: #ab87ec;
-            margin:5px 5px 3px 13px;
-            
+            margin: 5px 5px 3px 13px;
+
+        }
+
+        .line {
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+            background-color: #ddd;
+            color: #666;
+            margin-top: 9px;
+            padding: 0;
         }
 
         @font-face {
@@ -149,11 +161,26 @@
                 <li>
                     <div class="minibox">
                         <div class="describe">
-                            一个mini的自我介绍静态网站：<code>html</code>，<code>css</code>，<code>fontawesome</code>初体验
+                            仿京东首页的纯静态网站练习：<code>html</code>，<code>css</code>
+                        </div>
+                        <div class="link">
+                            <a target="_blank" href="https://www.qbenben.com/dailydemo/JD-Demo/"><span
+                                    class="iconfont icon-yulan"></span>预览链接</a>
+                                    <div class="line"></div>
+                            <a target="_blank" href="https://github.com/Zhengqbbb/dailydemo/tree/master/JD-Demo"><span
+                                    class="iconfont icon-yulan1"></span>源码链接</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="minibox">
+                        <div class="describe">
+                            一个mini的自我介绍纯静态网站练习：<code>html</code>，<code>css</code>，<code>fontawesome</code>初体验
                         </div>
                         <div class="link">
                             <a target="_blank" href="https://www.qbenben.com/dailydemo/MiniResumeDemo/"><span
                                     class="iconfont icon-yulan"></span>预览链接</a>
+                                    <div class="line"></div>
                             <a target="_blank"
                                 href="https://github.com/Zhengqbbb/dailydemo/tree/master/MiniResumeDemo"><span
                                     class="iconfont icon-yulan1"></span>源码链接</a>

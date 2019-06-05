@@ -1,0 +1,403 @@
+@charset "UTF-8";
+/*去掉边框、去掉轮廓（比如输入框外面的蓝边框）  */
+html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,input,button{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline-style: none;
+}
+/* 去掉列表的原点 */
+li,ol{
+  list-style: none;
+}
+/* 字体一般是指定这两个 */
+input{
+  padding-top: 0;
+  padding-bottom: 0;
+  font-family: "simsun","宋体";
+}
+/* 垂直对齐? */
+select,input{
+  vertical-align: middle;
+}
+
+select,input,textarea{
+  font-size: 12px;
+  margin: 0;
+}
+/* 禁止文本输入框在右下角拖拽（因为拖动后会调整输入框大小） */
+textarea{
+  resize: none;
+}
+/* 去掉图片底侧默认的3像素空白缝隙 */
+img{
+  border: 0;
+  vertical-align: middle;
+}
+/* 边框合并，如果相邻，则共用一个边框 */
+table{
+  border-collapse: collapse;
+}
+/* \5b8b\4f53指的是宋体 */
+body{
+  font:12px/150% Arial,Verdana,"\5b8b\4f53";
+  color: #666;
+  background: #fff;
+}
+/* 清除浮动开始 */
+/*  */
+.clearfix:before, .clearfix:after{
+  content: "";
+  display: table;
+}
+
+.clearfix:after{
+  clear: both
+}
+
+.clearfix{
+  *zoom: 1;/*IE/7/6*/
+}
+/* 结束清除浮动 */
+a{
+  color: #666;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #C81623;
+}
+/* font-size:100% 的意思是：让它们和父亲一样大，避免在不同的浏览器中显示大小不一致 */
+h1,h2,h3,h4,h5,h6{
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 100%;
+}
+/* 去掉i标签和em的斜体，取消s标签的删除线 */
+s,i,em{
+  font-style: normal;
+  text-decoration: none;
+}
+
+.col-red{
+  color: #C81623!important;
+}
+
+/* 公共部分 */
+/* 版心（可视区）。需要专门提取出来 */
+.w{
+  width: 1210px;
+  margin: 0 auto;
+}
+
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+.al{
+  text-align: left;
+}
+
+.ac{
+  text-align: center;
+}
+
+.ar{
+  text-align: right;
+}
+
+.hide{
+  display: none;
+}
+
+/* 顶部导航 */
+.shortcut{
+  height: 30px;
+  line-height: 30px;
+  background-color: #f1f1f1;
+}
+
+.dt,
+.shortcut .fore{
+  padding: 0 20px 0 10px;
+  position: relative;/* 相对位置 */
+}
+
+.dt i,
+.fore i{
+  font:400 15px/15px "宋体";
+  position: absolute; /* 绝对位置 */
+  top: 13px;
+  right: 3px;
+  height: 7px;
+  overflow: hidden;  /* 溢出隐藏的一个属性 */
+  width: 15px;
+}
+
+.dt s,
+.fore s{
+  position: absolute;
+  top: -8px;
+  left: 0;
+}
+
+.fr li{
+  float: left;
+  padding: 0 10px;
+}
+
+.fr .line{
+  width: 1px;
+  height: 12px;
+  background-color: #ddd;
+  color: #666;
+  margin-top: 9px;
+  padding: 0;
+}
+
+
+.shortcut .tel-jd{
+  padding: 0 20px 0 25px;
+}
+
+.tel{
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: url("../image/sm-phone.png") no-repeat;
+  left: 5px;
+  top: 5px;
+}
+
+
+/* end 顶部导航 */
+
+/* start-topbanner部分 */
+
+.tp{
+  position: relative;
+  
+}
+.close-banner {
+  position: absolute;
+  right:0;
+  top:5px;
+  width: 19px;
+  height: 19px;
+  background: url(../image/close.png) no-repeat;
+}
+
+/* .close-banner:hover {
+  background-position:center;
+} */
+
+
+/* end start-topbanner部分 */
+
+/* start serach部分 */
+.search-logo{
+  float: left;
+  width: 362px;
+  height: 60px;
+  padding: 20px 0;
+}
+
+.search-logo a{
+  width: 270px;
+  height: 60px;
+  display: block;
+  text-indent: -9999px;
+  background: url("../image/logo.png") no-repeat;
+}
+
+.search-input{
+  float: left;
+  height: 36px;
+  padding-top: 25px;
+}
+
+.search-input input{
+  float: left;
+  width: 450px;
+  height: 32px;
+  padding-left: 4px;
+  font: 400 14px/32px "microsoft yahei";
+  color: rgb(153, 153, 153);
+  border: 2px solid #B61D1D;
+  border-right: 0;
+}
+
+.search-input button{
+  width: 82px;
+  height: 36px;
+  color: #fff;
+  float: left;
+  font: 400 16px/36px "微软雅黑";
+  background-color: #861D1D;
+  cursor: pointer;
+}
+
+.search-car{
+  float: left;
+  width: 96px;
+  height: 34px;
+  line-height: 34px;
+  padding-left: 43px;
+  position: relative;
+  margin: 25px 65px 0 0;
+  border: 1px solid #DFDFDF;
+  background-color: #F9F9F9;
+}
+
+.ico1{
+  position: absolute;
+  top: 9px;
+  left: 18px;
+  width: 18px;
+  height: 16px;
+  background: url("../image/car.png") no-repeat ;
+}
+
+.ico2{
+  position: absolute;
+  right: 10px;
+  color: #999;
+  font: 13px/34px "SimSun";
+}
+
+.ico3{
+  position: absolute;
+  top: -5px;
+  width: 16px;
+  height: 14px;
+  background: 14px;
+  background-color: #C81623;
+  line-height: 14px;
+  text-align: center;
+  color: #fff;
+  border-radius: 7px 7px 7px 0;
+}
+
+.search-moreAlink{
+  float: left;
+  width: 530px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.search-moreAlink a{
+  margin-right: 8px;
+}
+/* end serach部分 */
+
+/* start slogen */
+.slogen{
+  height: 54px;
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.item{
+  width: 302px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+}
+
+.slogen1 {
+  margin-left: -508px;
+}
+
+.slogen2 {
+  margin-left: -204px;
+}
+
+.slogen3 {
+  margin-left: 108px;
+}
+
+.slogen4 {
+  margin-left: 408px;
+}
+
+.slogen-text{
+    line-height: 42px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: black;
+}
+/* end slogen */
+
+/* start footer-shopping  */
+.footer-shopping{
+  margin-top: 16px;
+}
+
+.footer-shopping dl{
+  float: left;
+  width: 200px;
+}
+
+dl.last-dl{
+  width: 100px;
+}
+
+.footer-shopping dt{
+  height: 34px;
+  font: 400 16px/34px "microsoft yahei";
+}
+
+.footer-shopping dd{
+  line-height: 20px;
+}
+/*购物指南等 end*/
+
+/* start 区域覆盖 */
+.coverage{
+  float: left;
+  width: 186px;
+  height: 169px;
+  margin-right: 60px;
+  padding-left: 17px;
+  background: url("../image/china.svg") no-repeat  center;
+}
+
+.coverage h3{
+  padding-top: 8px;
+  font: 400 16px/34px "microsoft yahei";
+}
+
+.coverage p{
+  padding-top: 8px;
+}
+.coverage a{
+  float: right;
+}
+/* end 区域覆盖 */
+
+/* start footer */
+.footer-bottom{
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px 0 30px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.footer-bottom .footer-about a{
+  margin: 0 10px;
+}
+
+.footer-copyright {
+  padding: 10px 0;
+}
+
+.footer-bottom-img a {
+  margin: 0 5px;
+}
