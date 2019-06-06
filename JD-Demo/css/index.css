@@ -1,0 +1,229 @@
+/* start 轮播图 */
+.main-slider{
+  float: left;
+  margin: 12px 0 0 220px;
+  width: 730px;
+  height: 454px;
+  position: relative;
+}
+
+.main-slider ul{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin-left:-66px;
+}
+
+.main-slider ul li{
+  float: left;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  background-color: #3E3E3E;
+  border-radius: 50%;
+  line-height: 18px;
+  text-align: center;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.main-slider .arrow-left {  /* 轮播图左侧的箭头*/
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+  left: 0px;
+  width: 28px;
+  height: 62px;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  font: 400 22px/62px "sumsun";
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.main-slider .arrow-left:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.main-slider .arrow-right {  /*轮播图右侧的箭头*/
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+  right: 0px;
+  width: 28px;
+  height: 62px;
+  background-color: pink;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  font: 400 22px/62px "sumsun";
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.main-slider .arrow-right:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+/* end 轮播图 */
+
+/* start京东快报 */
+
+
+
+.main-news-top-faster {
+  height: 163px;
+  border-bottom: 1px dashed #E4E4E4;    /*虚线*/
+}
+
+
+.main-news-top-faster-title {
+  height: 32px;
+  line-height: 32px;
+  border-bottom: 1px dotted #E8E8E8;   /*点线*/
+  padding: 0 15px;
+
+}
+
+.main-news-top-faster-title h2{
+  float: left;
+  margin-left: 5px;
+  font: 400 16px/32px "microsoft yahei";
+}
+
+.main-news-top-faster-title a {
+  float: right;
+}
+
+.main-news-top-faster-content {
+  padding: 5px 0 0 15px;
+
+}
+
+.main-news-top-faster-content li {
+  display: block;
+  padding-left: 940px;
+  line-height: 24px;
+}
+
+.main-news-top-faster-content span {
+  font-weight: 700;
+  margin-right: 5px;
+  color: #666;
+}
+
+.main-news-top-money ul {
+  width: 250px;
+}
+
+
+
+
+
+/*充话费部分start*/
+.main-news-top-money {
+  overflow: hidden;   /*将多余的部分切掉*/
+}
+
+.main-news-top-money ul {
+  width: 260px;   /*让宽度略大于整体的宽度250px*/
+  padding-left: 5px;
+}
+
+.main-news-top-money li {
+  width: 62px;
+  height: 70px;
+  border: 1px solid #E8E8E8;
+  float: left;
+  border-top: 0;  /* 将每个单元格的上边框去掉，因为跟单元格的下边框重合了。*/
+  margin-top: -1px;  /* 整体向上移动一个单位，因为边框重合了*/
+  margin-left: -1px ;/* 整体向左移动一个单位，因为边框重合了*/
+}
+
+.main-news-top-money li a {
+  display: block;
+  width: 62px;
+  height: 30px;
+  padding-top: 40px;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+}
+
+.main-news-top-money li a i {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  background: url("../image/62x70.png") right top;
+}
+
+.main-news-top-money .main-news-top-money-icon2 {
+  background: url("../image/62x70.png") right -25px;
+}
+
+
+/*今日推荐start*/
+.today {
+  padding: 10px 0 20px;
+}
+
+.today-left a{
+  display: block;
+  width: 210px;
+  height: 150px;
+  background: url("");
+}
+
+.today-right {
+  float: right;
+  width: 1000px;
+  overflow: hidden;  
+  position: relative;
+}
+
+.today-right ul {
+  width: 410;
+}
+
+.today-right li{
+  float: left;
+  margin-right: 1px;
+
+}
+.today-right .arrow-left {  /* 轮播图左侧的箭头*/
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+  left: 0px;
+  width: 28px;
+  height: 62px;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  font: 400 22px/62px "sumsun";
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.today-right .arrow-left:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.today-right .arrow-right {  /*轮播图右侧的箭头*/
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+  right: 30px;
+  width: 28px;
+  height: 62px;
+  background-color: pink;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  font: 400 22px/62px "sumsun";
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.today-right .arrow-right:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+/*今日推荐end*/

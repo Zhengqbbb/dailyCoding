@@ -401,3 +401,102 @@ dl.last-dl{
 .footer-bottom-img a {
   margin: 0 5px;
 }
+/* end footer */
+
+/* start shortcut-nav */
+.shortcut-nav{
+  height: 44px;
+  border-bottom: 2px solid #B1191A
+}
+.shortcut-nav-menu{
+  width: 210px;
+  height: 44px;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+
+.shortcut-nav-menu-all a {
+  display: block;
+  width: 190px;
+  height: 44px;
+  color: white;
+  padding: 0 10px;
+  background-color: #B1191A;
+  font: 400 15px/44px "microsoft yahei";
+}
+
+.shortcut-nav-menu-one {
+  height: 465px;
+  margin-top: 2px;
+  background-color: #C81623;
+  border-left: 1px solid #B1191A;
+  border-bottom: 1px solid #B1191A;
+  /*border-left: 1px solid #000;*/
+  /*border-bottom: 1px solid #000;*/
+}
+
+.shortcut-nav-items{
+  width: 730px;
+  height: 44px;
+  float: left;
+}
+
+.shortcut-nav-items li{
+  float: left;
+}
+
+.shortcut-nav-items a {
+  display: inline-block;
+  height: 44px;
+  padding: 0 20px;
+  color: #333;
+  font: 400 16px/44px "microsoft yahei";
+}
+
+.shortcut-nav-items a:hover {
+  color: #C81623;
+}
+
+.shortcut-nav-img {
+  
+  float: right;
+  width: 200px;
+  height: 44px;
+  float: right;
+  margin-top: -2px;
+  margin-right: 50px;
+  /*position: relative;*/
+  /*left: -50px;*/
+  /*top: -10px;*/
+}
+
+.shortcut-nav-menu-one ul {
+  font: 400 14px/31px "microsoft yahei";   /*字体属性具有继承性，让儿子 a 具有此继承性*/
+}
+
+.shortcut-nav-menu-one li {
+  padding-left: 10px;
+  position: relative;
+}
+
+.shortcut-nav-menu-one a{
+  color: #fff;
+}
+
+.shortcut-nav-menu-one i {
+  right: 10px;
+  position: absolute;
+}
+
+.shortcut-nav-menu-one li:hover {
+  background-color: #fff;
+}
+
+.shortcut-nav-menu-one li:hover a,span,i{
+  color: #C81623;
+}
+
+/* end shortcut-nav */
+
+
