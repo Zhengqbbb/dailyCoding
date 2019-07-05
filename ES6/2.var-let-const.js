@@ -1,7 +1,8 @@
+
+
 /**
  * let const可以生成一个私有变量或者常量
  * var声明在外面是一个全局变量，这样很容易会污染到全局作用域，或者其他作用域
- * 
  */
 var name = 'Jelly'
 //此时会污染window属性中的name属性
@@ -42,4 +43,11 @@ for (let i = 0; i < 10; i++) {
   setTimeout(function(){
     console.log(`i:${i}`)
   }, 1000);
+}
+
+
+//需要注意的是：在let，const中虽然会把变量声明提升，但是存在临时性死区
+
+function ai (a){
+return a;
 }
