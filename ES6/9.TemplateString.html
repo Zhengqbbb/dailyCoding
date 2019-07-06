@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tagged Template Strings</title>
+  <style>
+    .highlight {
+      padding: 2px 5px;
+      background: #00adb5;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-06 03:50:51 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-06 04:29:59
+     * 劫持模板字符串练习
+     * 其实劫持模板字符串还有一个应用，过滤用户的输入，类型于xss攻击
+     * 有一种防御就是定义一个劫持模板字符串，将用户的输入过滤掉一些onload等xss攻击事件
+     */
+
+
+    //劫持模板函数
+    /*  function highlight(strings, ...values) {
+       const highlighted = values.map(value => `<span class="highlight">
+          ${value}</span>`);
+       let str = '';
+       strings.forEach((string, i) => str += `${string}${highlighted[i] || ''}`);
+       return str;
+     } */
+    //可以写成
+    function highlight(strings, ...values) {
+      const highlighted = values.map(value => `<span class="highlight">
+         ${value}</span>`);
+      return strings.reduce((previous, current, i) => `${previous}${current}${highlighted[i] || ''}`, '');
+    }
+
+
+    const user = 'Mary';
+    const topic = 'Learn to use markdown'
+    const sentence = highlight `${user} has commented on your topic ${topic}`;
+
+    document.body.innerHTML = sentence;
+  </script>
+</body>
+
+</html>
