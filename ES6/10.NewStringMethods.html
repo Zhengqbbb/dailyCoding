@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  const id = '440582199708201517'  
+  const fan = 'I love Laravist'
+
+  //.startsWith() 大小写敏感
+    //是否是四川省的
+    const isSiChuang = id.startsWith('51');
+    console.log(isSiChuang);
+    //是否是1997年出生
+    const is1997 = id.startsWith('1997', 6);
+    console.log(is1997);
+    //
+  
+  //endsWith() 大小写敏感
+    //判断是不是x结尾
+    const isX = id.endsWith('X');
+    console.log(isX);
+    //判断是不是love，索引值从前往后数
+    const islove = fan.endsWith('love', 6);
+    console.log(islove)
+
+  //includes() 是否包含
+    //以前我们的使用方法
+    const isLaravist = fan.indexOf('Laravist') !== -1;
+    console.log(isLaravist)
+    //现在我们可以使用ES6的方法,第二个参数是从前往后数的索引值
+    const isLaravist1 = fan.includes('Laravist');
+    console.log(isLaravist1)
+
+  //repeat 将字符串重复多少次
+    const heading = `${'='.repeat(5)} ${fan} ${'='.repeat(5)}`;
+    console.log(heading)
+    //右对齐函数
+    function padder(string,length=25){
+      return `${' '.repeat(Math.max(length - string.length,0))}${string}`
+    }
+    console.log(padder(id));
+    console.log(padder(fan));
+  </script>
+</body>
+</html>
