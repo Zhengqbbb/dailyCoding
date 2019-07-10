@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 12:02:29 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 13:03:30
+     * for-of 使用示例
+     */
+    const fruits = ['Apple', 'Banana', 'Orange', 'Mango'];
+    //entries 数组内置的遍历器接口 里面有个next迭代方法
+    //如果我们要取到里面的索引值和值就可以用下列的方法
+    for (let fruit of fruits.entries()) {
+      console.log(fruit[0], fruit[1])
+    }
+    console.log('==========分割线===========')
+
+    //使用解构的语法,目前不支持对象
+    for (let [index, fruit] of fruits.entries()) {
+      console.log(index, fruit)
+    }
+
+    console.log('==========分割线===========')
+    //还可以使用在argument，字符串，NodeList，map，set
+  </script>
+</body>
+
+</html>

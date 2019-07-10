@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben
+     * @Date: 2019-07-10 10:43:41
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 11:09:15
+     * 数组解构练习
+     */
+    const numbers = ['one', 'two', 'three', 'four'];
+
+    //一般我们要使用的数组中的值的话
+    const one1 = numbers[0];
+    const two1 = numbers[1];
+    console.log(one1);
+    console.log(two1);
+
+    //ES6 中使用数组解构
+    const [one, two, ...others] = numbers;
+    console.log(one, two, others);
+
+    //赋予默认值
+    const details = ['JellyBool', 'laravist.com'];
+    const [name, website, category = 'Node.js'] = details;
+    console.log(name, website, category);
+
+    //最常用的应用场景就是 两数值交换
+    let a = 10;
+    let b = 20;
+
+    //以前我们的使用方法
+    /* let temp;
+    temp = a;
+    a = b;
+    b = temp;
+
+    console.log(a, b); */
+
+    //使用数组解构方式
+    [a, b] = [b, a];
+    console.log(a, b);
+  </script>
+</body>
+
+</html>

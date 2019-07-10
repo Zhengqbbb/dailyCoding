@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 11:20:36 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 11:59:06
+     * for of 练习
+     */
+    Array.prototype.first = function() {
+      return this[0];
+    }
+    const fruits = ['Apple', 'Banana', 'Orange', 'Mango'];
+    fruits.describe = 'My favorite fruits'
+
+
+    //过去我们可以使用for循环来遍历
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(fruits[i])
+    }
+    console.log('==============================');
+
+    //我们也可以是使用数组的foreach方法来遍历
+    //foreach方法的优点是简化了我们的语法并且可以给每一个数组的元素命名
+    //缺点是：不能终止或者跳过
+    fruits.forEach(fruit => console.log(fruit));
+    console.log('==============================')
+    //我们也可以使用for-in方法来循环我们的数组
+    //需要注意的是 for-in方法遍历的是对象的可枚举属性,会多返回对象的属性
+    //所以为了处理这个问题ES6多了for-of方法
+    for (let index in fruits) {
+      console.log(index)
+      console.log(fruits[index])
+    }
+    console.log('==============================')
+    //最重要的是不会遍历非数字属性
+    for (let fruit of fruits) {
+      console.log(fruit);
+    }
+  </script>
+
+</body>
+
+</html>

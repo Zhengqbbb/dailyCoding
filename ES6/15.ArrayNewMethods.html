@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>Go to Store</li>
+    <li>Watch TV</li>
+    <li>Learn ES6</li>
+  </ul>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 13:04:37 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 13:35:40
+     * 数组的新方法 Array 的 .from()和.of()
+     * 并不是Array原型的方法
+     */
+    const todos = document.querySelectorAll('li'); //此时todos是类数组对象
+    //使用Arrary.from()转换成一个数组
+    //第二个参数 是类似于map方法 对立面的元素执行对应的函数
+
+    /* const todosArr = Array.from(todos);
+    const names = todosArr.map(todo => todo.textContent); */
+
+    //改写
+    const names = Array.from(todos, todo => todo.textContent)
+    console.log(names)
+
+    //第二个from的应用场景，将argument可迭代对象转换为真正的数组
+    function sum() {
+      return Array.from(arguments).reduce((previous, current) => previous + current, 0);
+    }
+
+    console.log('==========分割线===========')
+    //当你new Array()这个构造函数时 传入的参数个数不一样，行为也不一样
+    //Array.of()就可以帮我解决这个问题  返回结果的一致性
+    const arr1 = Array.of(1);
+    console.log(arr1);
+    const arr2 = Array.of(1, 2, 3);
+    console.log(arr2);
+  </script>
+</body>
+
+</html>

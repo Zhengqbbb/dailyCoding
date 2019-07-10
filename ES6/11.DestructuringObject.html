@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 10:44:41 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 10:56:17
+     * 对象解构
+     */
+    const Tom = {
+      name: 'Tom Jones',
+      age: 25,
+      family: {
+        mother: 'Norah Jones',
+        father: 'Richard Jones',
+        brother: 'Howard Jones'
+      },
+    }
+    //一般我们要使用其中的name和age如下
+    const name1 = Tom.name;
+    const age1 = Tom.age;
+    console.log(name1);
+    console.log(age1);
+
+    //ES6对象解构
+    const {
+      name,
+      age
+    } = Tom;
+    console.log(name)
+    console.log(age)
+
+    //重复定义了father变量名
+    const father = 'Dad';
+    const { father: f, mother: m, brother: b } = Tom.family;
+    console.log(father);
+    console.log(f);
+    console.log(m);
+    console.log(b);
+
+    //加入有新的变量添加设置默认值，或者叫回滚值 只会给undefind的值
+    const { sister = 'have no sister' } = Tom.family;
+    console.log(sister);
+  </script>
+</body>
+
+</html>
