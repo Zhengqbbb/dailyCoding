@@ -14,12 +14,43 @@
      * @Author: qbenben 
      * @Date: 2019-07-10 17:51:53 
      * @Last Modified by: qbenben
-     * @Last Modified time: 2019-07-10 17:52:34
+     * @Last Modified time: 2019-07-10 18:08:11
      * ES6 对象字面量扩展
      */
     const name = 'Qben';
     const age = 2;
     const birthday = '1997-08';
+
+    /* const Qben = {
+       name: name,
+       age: age,
+       birthday: birthday
+     } */
+    const Qben = { name, age, birthday };
+
+    console.log(Qben);
+
+    console.log('==================================================================')
+
+    let id = 0;
+    const userIds = {
+      [`user-${++id}`]: id,
+      [`user-${++id}`]: id,
+      [`user-${++id}`]: id,
+    }
+    console.log(userIds)
+
+    console.log('===================================================================')
+
+    const key = ['name', 'age', 'birthday'];
+    const value = ['qben', '18', '1997-08']
+    const Qbenben = {
+      [key.shift()]: value.shift(),
+      [key.shift()]: value.shift(),
+      [key.shift()]: value.shift(),
+    }
+
+    console.log(Qbenben);
   </script>
 </body>
 
