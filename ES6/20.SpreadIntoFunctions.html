@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 17:35:59 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 17:50:50
+     * 扩展运算符在函数中的运用
+     */
+
+    const fruit = ['apple', 'banana', 'pear'];
+    const newFruit = ['orange', 'mongo'];
+
+    //假如你想把 一个数组中的元素追加到另一个数组中区，又不新生成一个新数组
+    //你可能会这样做
+    //fruit.push(newFruit); //false
+    //console.log(fruit);
+    /*  0: "apple"
+        1: "banana"
+        2: "pear"
+        3: (2)["orange", "mongo"] */
+    //fruit.push.apply(fruit, newFruit); //true
+    //console.log(fruit);
+
+    //ES6中也可以这样写
+    fruit.push(...newFruit);
+    console.log(fruit);
+
+
+
+    console.log('===================================')
+
+    //日期函数
+    const dateFields = [2019, 7, 10, 17, 20];
+    //过去写法： const date = new Date(dateFields[0], dateFields[1], dateFields[2])
+    const date = new Date(...dateFields)
+    console.log(date);
+  </script>
+</body>
+
+</html>

@@ -14,10 +14,31 @@
      * @Author: qbenben 
      * @Date: 2019-07-10 13:36:49 
      * @Last Modified by: qbenben
-     * @Last Modified time: 2019-07-10 13:37:14
+     * @Last Modified time: 2019-07-10 16:03:01
      * 更多的 Array 方法使用
      */
-    
+    const inventory = [
+      { name: 'apples', quantity: 2 },
+      { name: 'bananas', quantity: 0 },
+      { name: 'cherries', quantity: 5 },
+    ];
+
+    //.find(element,index,array) 找到满足条件的元素，找到后立马返回
+    const bananas = inventory.find(fruit => fruit.name === 'bananas');
+    console.log(bananas)
+
+    //.findindex() 查找元素返回元素的索引值
+    const bananasIndex = inventory.findIndex(fruit => fruit.name === 'bananas');
+    console.log(bananasIndex)
+
+    //.some() 如果数组中的某个元素满足了你的测试函数的话则返回一个 布尔值
+    //需要注意的是 一旦符合条件后就直接返回了true 而不会执行接下来元素
+    const isEnough = inventory.some(fruit => fruit.quantity > 0);
+    console.log(isEnough);
+
+    //.every() 如果数组中所有的元素都满足你的测试函数的话则返回一个 布尔值
+    const isAllEnough = inventory.every(fruit => fruit.quantity > 0);
+    console.log(isAllEnough);
   </script>
 </body>
 

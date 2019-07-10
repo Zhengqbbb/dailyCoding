@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 16:28:57 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 16:45:20
+     * 扩展运算符
+     */
+
+    const youngers = ['George', 'John', 'Tgomas'];
+    const olders = ['James', 'Adrew', 'Wartin'];
+
+    //以前我们要把两个数组整合到一起并且在中间添加元素的话 使用的是 concat()
+    /*     let members = [];
+        members = members.concat(youngers);
+        members.push('Mary');
+        members = members.concat(olders);
+        console.log(members); */
+
+    //现在我们用ES6的扩展字符串来完成上面的书写
+    const members = [...youngers, 'Marry', ...olders];
+    console.log(members);
+
+    //也可以应用在复制数组中
+    /* const currentMembers = members; */ //这种写法的话是将 members 的地址复制到 currentMembers ,会导致修改会影响members
+    //为了避免 我们在以前是：
+    const currentMembers = [].concat(members);
+
+    //可以使用扩展运算符
+    const currentMembers1 = [...members];
+    console.log(currentMembers1)
+  </script>
+</body>
+
+</html>

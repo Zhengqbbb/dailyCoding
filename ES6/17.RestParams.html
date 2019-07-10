@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-10 16:05:10 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-10 16:27:39
+     * ES6 中剩余参数的使用
+     */
+
+    function sum(...args) {
+      return args.reduce((previous, current) => previous + current, 0);
+    }
+
+    console.log(sum(1, 2, 3, 4))
+
+    //应用场景
+    function converCurrency(rate, ...amounts) {
+      return amounts.map(amount => amount * rate);
+    }
+
+    const amounts = converCurrency(0.9, 12, 34, 24, 39);
+    console.log(amounts);
+
+    //应用场景——二 用于对象的解构
+    const player = ['Jelly', 1074059947, 89, 90, 100];
+    const [name, _id, ...scores] = player;
+    console.log(name, _id, scores)
+  </script>
+
+</body>
+
+</html>
