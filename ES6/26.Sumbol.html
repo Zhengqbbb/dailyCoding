@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-11 15:50:49 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-11 16:12:10
+     * Symbol 的理解
+     * 第七种数据类型： 可以解决对象属性命名冲突
+     */
+
+    const peter = Symbol('peter');
+    const student = Symbol('student');
+    console.log(typeof(peter));
+    console.log(peter === student)
+
+    const classRoom = {
+      [Symbol('Liliy')]: { grade: 60, gender: 'female' },
+      [Symbol('Nina')]: { grade: 80, gender: 'female' },
+      [Symbol('Nina')]: { grade: 90, gender: 'female' }, //此时有两个Nina
+    }
+
+    console.log(classRoom)
+
+    //注意Symbol是不能遍历的
+    for (let key in classRoom) {
+      console.log(key)
+    }
+    //但是ES6中有可以遍历的方法 getOwnPropertySymbols()
+    //需要注意的是  获取得到的是一个数组 遍历时候要加上方括号
+    const syms = Object.getOwnPropertySymbols(classRoom)
+      .map(sym => classRoom[sym]);
+    console.log(syms);
+
+    //Symbol 是可以在内部定义私有属性，方便我们在对象内部使用
+  </script>
+</body>
+
+</html>

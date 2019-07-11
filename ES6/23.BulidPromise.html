@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-11 12:49:21 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-11 13:36:59
+     * 构建一个Promise
+     */
+
+    /**
+     * @param  {正确成功后的信息} resolve
+     * @param  {失败调用返回失败的信息} reject
+     */
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Laravist is a awesome!');
+      }, 2000);
+    });
+
+    p.then(data => { console.log(data) });
+
+    console.log('=============================')
+
+    const p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(Error('Laravist is a awesome!'));
+      }, 2000);
+    });
+
+    p1
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  </script>
+</body>
+
+</html>

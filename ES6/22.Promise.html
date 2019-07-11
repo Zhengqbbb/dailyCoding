@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     /*
@@ -21,15 +21,32 @@
      */
 
     //promise的出现
-    let user;
-
+    let username;
+    //下面我发起了两个ajax请求
     //fetch all users
-    $.get('http://api.github.com/users', data => {
+/*     $.get('http://api.github.com/users', data => {
       console.log('fetch all users');
       user = data[0].login;
-    });
+      //fetch the first user's repos
+      $.get(`https://api.github.com/users/${user}/repos`, data => {
+        console.log('fetched user repos');
+        console.log(data)
+      });
+    }); */
 
-    $.get(`https://api.github.com/users/${`)
+    const usersPromise = axios.get('http://api.github.com/users');
+
+    usersPromise
+    .then(reponse =>{
+      username = reponse.data[0].login;
+      return axios.get(`https://api.github.com/users/${username}/repos`)
+    })
+    .then(reponse => {
+      console.log(reponse.data);
+    })
+    .catch((err) => {
+      console.err(err)
+    })//监听错误
   </script>
 
 </body>
