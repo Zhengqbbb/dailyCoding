@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "loadsh": "0.0.4",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "slug": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
