@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-12 17:14:31 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-12 17:31:22
+     * ES6中类的定义（语法糖）
+     */
+
+    class User {
+      //构造函数
+      constructor(name, email) {
+        this.name = name;
+        this.email = email;
+      }
+      //不用逗号间隔
+      //方法
+      info() {
+        console.log(`Hi I am ${this.name}, my email is ${this.email}`);
+      }
+
+      //静态方法，通过类名调用，不能通过实例调用
+      static descripion() {
+        console.log(`my blog is www.qbenben.com`)
+      }
+      //GET SET方法
+      set github(value) {
+        this.githubName = value;
+      }
+
+      get github() {
+        return `https://github.com/${this.githubName}`;
+      }
+
+    }
+
+    const qbenben = new User('qbenben', 'zhengqbbb@gmail.com');
+  </script>
+</body>
+
+</html>
