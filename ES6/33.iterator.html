@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-14 22:56:28 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 02:32:50
+     *  迭代器 遍历器 iterator
+     */
+
+    const colors = ['red', 'blue', 'greeen'];
+    //比如说我们这里有一个数组，我们可以通过for-of对可遍历对象进行循环
+    for (const color of colors) {
+      console.log(color);
+    }
+    //迭代器就是一个对象，有一个next方法，可以返回那些数据
+    //可遍历对象就是具有 Symbol.iterator属性
+
+    //接下来我们就可以编写我们自己的遍历器
+    // 首先我们要了解，在ES6中三种类型的集合对象Array,Set,Map
+
+    // 1.Array  调用.entries()
+    let iterator1 = colors.entries();
+    console.log(iterator1.next());
+    // 调用.keys()
+    iterator1 = colors.keys();
+    console.log(iterator1.next());
+    // 调用.values()方法 可以发现有一些浏览器是不支持，所以我们要自己完善
+    /* iterator1 = colors.values();
+    console.log(iterator1.next()); */
+
+    /** 
+     * 手写迭代器方法返回数组中的值，类似于 for-of方法
+     *  for-of方法是调用了Symbol.iterator获取到value的值，并保存到color当中
+     */
+    Array.prototype.values = function() {
+      let i = 0;
+      let items = this;
+      return {
+        next() {
+          const done = i >= items.length;
+          const value = done ? undefined : items[i++]
+          return {
+            value,
+            done
+          }
+        }
+      }
+    }
+
+    iterator1 = colors.values();
+    console.log(iterator1.next());
+  </script>
+</body>
+
+</html>
