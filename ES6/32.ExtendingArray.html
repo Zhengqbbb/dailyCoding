@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben
+     * @Date: 2019-07-14 18:07:31
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-14 22:54:15
+     *  用 ES6 来扩建我们的内建对象 Array
+     */
+
+    //ES6中的继承机制和ES5中的有所不同,下面这种this的值指向的是MyArray的实例
+    //Array的其他属性会修改我们this的值
+    /* function MyArray() {
+      Array.apply(this, arguments);
+    } */
+    // 接下来我们用 ES6 的class语法糖就可以帮我们扩建我们的内建对象Array
+    // 首先使我们的super()指向我们基类Array，在ES6中我们是可以访问基类Array的功能的
+    class MyArray extends Array {
+      constructor() {
+        super();
+      }
+    }
+
+    const colors = new MyArray();
+    colors[0] = 'red';
+    //console.log(colors.length);
+
+    colors.length = 0;
+    //console.log(colors[0]);
+
+
+
+
+    //继承demo电影参考表
+    class movieCollection extends Array {
+      constructor(name, ...items) {
+        super(...items);
+        this.name = name;
+      }
+
+      add(movie) {
+        this.push(movie);
+      }
+
+      topRated(limit = 10) {
+        return this.sort((a, b) => (a.scroes > b.scroes) ? -1 : 1).slice(0, limit)
+      }
+    }
+
+    const movies = new movieCollection('favorite movies', { name: 'The Crods', scroes: 8.7 }, { name: 'The Shawshank Redemption', scroes: 9.6 }, { name: 'Leon', scroes: 9.4 }, { name: 'Days of Summer', scroes: 8.0 }, );
+
+
+    console.table(movies.topRated())
+  </script>
+</body>
+
+</html>
