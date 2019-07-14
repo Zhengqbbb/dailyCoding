@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 02:58:40 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 03:19:30
+     *  Generator 的实际应用：用来控制我们ajax的工作流
+     */
+
+    /*     let username;
+        const usersPromise = axios.get('https://api.github.com/users');
+        usersPromise
+          .then(res => {
+            username = res.data[0].login;
+            return axios.get(`https://api.github.com/users/${username}/repos`)
+          })
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(err => {
+            console.error(err)
+          }) */
+
+    //如何使用Generator来完成上面的代码
+    function ajax(url) {
+      axios.get(url).then(res => userGen.next(res.data))
+
+    }
+    //以下的异步操作操作都是互相依赖的，我们可以通过Generator来控制暂停和开始
+    function* steps() {
+      console.log('fetching users')
+      const users = yield ajax('https://api.github.com/users');
+      console.log(users)
+
+      console.log('fetching firstUser')
+      const firstUser = yield ajax(`https://api.github.com/users/${users[0].login}`);
+      console.log(firstUser)
+
+      console.log('fetching firstUser Follwers')
+      const followers = yield ajax(firstUser.followers_url);
+      console.log(followers)
+    }
+
+    const userGen = steps();
+    userGen.next();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 02:34:09 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 02:55:50
+     *  Generator 生成器
+     */
+
+    function* listColors() {
+      //相当于我们在普通函数里面用的return，可以他的意思是本次调用这个函数返回什么,下一次返回的是下一个yield
+      yield 'red';
+      yield 'green';
+      yield 'blue';
+    }
+
+
+    const colors = listColors()
+    //调用我们这个函数其实 一个iterator 迭代器，因此我们需要使用next()方法调用相对应的值
+    console.log(colors.next())
+
+    //当然我们用它来循环一个数组
+    const colorsItems = ['red-1', 'green-1', 'blue-1'];
+
+    function* loop(colors) {
+      for (const color of colors) {
+        yield color;
+      }
+    }
+
+    const colorList = loop(colorsItems);
+    console.log(colorList.next());
+    console.log(colorList.next());
+    console.log(colorList.next());
+  </script>
+</body>
+
+</html>
