@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 19:48:42 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 21:33:56
+     *  
+     *  
+     *  WeakMap 也是在Map的基础上有一些限制
+     *  没有size，不能循环，key只能是对象,没有clean方法
+     *  如果其中的元素在其他地方没有别引用，就会被垃圾回收机制自动清理元素
+     */
+    let Jelly = { name: 'jelly' };
+    let Miffy = { name: 'miffy' };
+
+    const strong = new Map();
+    const weak = new WeakMap();
+
+    strong.set(Jelly, 'jelly is the best');
+    weak.set(Miffy, 'miffy is the 2nd best');
+    //console.log(strong.size)
+    //console.log(weak.size)
+
+    /* for (let person of weak) {
+      console.log(person) // error: weak is not iterable
+    } */
+
+
+
+    Jelly = null;
+    Miffy = null;
+    //  console.log(strong)
+    //  console.log(weak)
+  </script>
+</body>
+
+</html>
