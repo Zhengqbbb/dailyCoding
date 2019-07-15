@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 14:35:47 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 14:52:38
+     *  Proxy 重写对象的一些默认的方法
+     */
+
+    const person = { name: 'lavavist', age: 2000 }
+    // 参数： target 表示要操作的对象 ， handler 表示要重写的一些操作
+    const personProxy = new Proxy(person, {
+      //获取属性时候转为大写
+      get(target, key) {
+        //console.log(target, key);
+        return target[key].toUpperCase();
+      },
+      //设置属性去掉多余空格
+      set(target, key, value) {
+        if (typeof value === 'string') {
+          target[key] = value.trim();
+        }
+      }
+    })
+
+    personProxy.name = 'qbenben';
+    console.log(personProxy.name);
+
+
+    personProxy.love = '            I love qbenben              ';
+    console.log(personProxy.love);
+  </script>
+</body>
+
+</html>

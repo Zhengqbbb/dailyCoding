@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 14:53:58 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 15:34:25
+     * 
+     *  Proxy 例子
+     */
+    //格式化电话号码
+    /* const phoneHandler = {
+      set(target, key, value) {
+        target[key] = value.match(/[0-9]/g).join('');
+      },
+
+      get(target, key) {
+        return target[key].replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+      }
+    };
+    const phoneNumber = new Proxy({}, phoneHandler);
+
+    phoneNumber.home = '131 1818 2213';
+    phoneNumber.work = '159 155 15511';
+
+    console.log(phoneNumber.home);
+    console.log(phoneNumber.work);
+    console.log(phoneNumber); */
+
+
+
+
+
+    //对用户输入进行保护和处理
+    const safeHandle = {
+      set(target, key, value) {
+        const likeKey = Object.keys(target).find(k => k.toLowerCase() === key.toLowerCase());
+        //用户输入的属性不在对象定义的属性中 并且 没有相对应大小写的对象属性
+        if (!(key in target) && likeKey) {
+          throw new Error(`Have a property ${key} but with the case of ${likeKey}`);
+        }
+        //则将用户输入的属性定义创建在对象的属性中
+        target[key] = value;
+      }
+    }
+
+    const safetyProxy = new Proxy({ id: 2 }, safeHandle);
+    //已经有小写的id   避免用户使用大写的ID重新定义这个值
+    safetyProxy.ID = 5;
+  </script>
+</body>
+
+</html>

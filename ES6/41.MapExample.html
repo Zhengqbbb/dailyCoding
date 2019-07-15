@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    button {
+      padding: 10px 15px;
+      font-size: 18px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>Fire</button>
+  <button>Dance</button>
+  <button>Ice Cream</button>
+  <button>Hamburger</button>
+  <button>Fish</button>
+
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 19:30:28 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 19:42:01
+     *  
+     *  记录button的点击数
+     *  
+     */
+    //Map和对象 最大的区别就是Map的属性可以是任意类型的
+    //Map的一个应用就是：存储的是这个对象相应的信息
+    //                 而不是把相应的信息存在到对象当中
+
+    const clickCounts = new Map();
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      clickCounts.set(button, 0);
+      button.addEventListener('click', function() {
+        const val = clickCounts.get(this);
+        clickCounts.set(this, val + 1);
+        //console.log(val);
+        console.log(clickCounts);
+      })
+    })
+  </script>
+
+
+</body>
+
+</html>

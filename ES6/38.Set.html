@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 15:35:29 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 16:51:00
+     *  Set 的学习  唯一值 ，不能通过索引值获取元素
+     *  在ES5中只有array这种集合类型
+     */
+
+    const colors = new Set();
+    colors.add('red');
+    colors.add('red');
+    colors.add('blue');
+    colors.add('5');
+    colors.add(5);
+
+    /*     console.log(colors)
+
+        const isDelete = colors.delete('red');
+        console.log(colors)
+        const isRed = colors.has('red');
+        console.log(colors)
+        colors.clear();
+        console.log(colors) */
+
+
+    //遍历
+    const setIterator = colors.values()
+    console.log(setIterator)
+    console.log(setIterator.next())
+    console.log(setIterator.next())
+
+    for (let color of colors) {
+      console.log(color)
+    }
+
+    //数组去重
+    const numbers = [1, 2, 3, 4, 5, 5, 5, 5];
+    const numbersSet = new Set(numbers);
+    const uniqueNumbers = [...numbersSet];
+    console.log(numbersSet);
+    console.log(uniqueNumbers);
+  </script>
+</body>
+
+</html>

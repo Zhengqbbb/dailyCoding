@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 16:52:04 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 17:43:45
+     *  WeakSet 类似于 Set，只不过在Set的基础上有了一些限制
+     *  这些限制有时候也是一种优势 
+     */
+
+    let jelly = { name: 'Jelly', age: 20 };
+    let mary = { name: 'Mary', age: 25 };
+    //WeakSet 参数之能是对象，没有Symbol.iterator属性不能用for-of，foreach来循环
+    const peopleweak = new WeakSet([jelly, mary])
+    //没有clear()这个方法，可以自己清除
+
+    const peopleArr = [jelly, mary];
+    console.log(peopleArr)
+    mary = null;
+    console.log(peopleArr); //可以发现mary并没有被清除，还有peopleArr中的mary还存在，这就是我们常说的内存泄漏
+    //内存泄漏： 虽然我们把这个对象删除，但是我们数组还存在对他的引用
+
+    //可是我们的weakset可以自己清除
+    console.log(peopleweak)
+    //经过一段时间后就可以发现mary被清除了
+
+    //应用在  下载列表中的追踪
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+     * @Author: qbenben 
+     * @Date: 2019-07-15 17:44:36 
+     * @Last Modified by: qbenben
+     * @Last Modified time: 2019-07-15 18:08:02
+     *  Map和Set之间有很多相似的地方，只不过存储是用键值对
+     *
+     */
+    const people = new Map();
+    //.set()
+    people.set('jelly', 23);
+    people.set('mary', 25);
+    people.set('miffy', 30);
+
+    console.log(people);
+    //.get()
+    const jellyValue = people.get('jelly');
+    console.log(jellyValue)
+
+    //.size
+    console.log(people.size);
+
+    //.has()
+    const isJelly = people.has('jelly');
+    console.log(isJelly)
+
+    //.delete()
+    console.log(people.delete('jelly'));
+    console.log(people);
+
+    //.clear()
+    people.clear();
+    console.log(people);
+
+    //用foreach来遍历
+    people.forEach((value, key, map) => {
+      console.log(value, key, map)
+    });
+
+    //用for-of来循环
+    for (let person of people) {
+      console.log(person);
+    }
+    //解构
+    for (let [key, value] of people) {
+      console.log(key, value);
+
+    }
+
+
+    //更多初始化
+    const fruits = new Map([
+      ['appple', 6],
+      ['banana', 5]
+    ]);
+
+    console.log(fruits)
+  </script>
+
+</body>
+
+</html>
