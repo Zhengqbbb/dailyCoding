@@ -1,0 +1,22 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.wrp {
+  background-color: #b9b9b9;
+  width: 100vw;
+  height: 100vh;
+}
+.box {
+  color: white;
+  background-color: pink;
+  width: 25vw;
+  height: 25vh;
+  overflow: auto;
+}
+.wrp1 { position: relative; }
+.box1 {
+  margin: auto;
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+}
