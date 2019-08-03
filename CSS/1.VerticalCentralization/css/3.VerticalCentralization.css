@@ -1,22 +1,28 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
+
 .wrp {
   background-color: #b9b9b9;
   width: 100vw;
   height: 100vh;
 }
-.box {
+
+.wrp3 {
+  position: relative;
+}
+.box{
   color: white;
   background-color: pink;
-  width: 50vw;
-  height: 50vh;
   overflow: auto;
 }
-.wrp1 { position: relative; }
-.box1 {
+.box3 {
   margin: auto;
   position: absolute;
-  left: 0; right: 0; top: 0; bottom: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

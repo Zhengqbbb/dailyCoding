@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrp4 {
+  background-color: #b9b9b9;
+  display: table;
+  width: 100vw;
+  height: 100vh;
+}
+
+.subwrp4 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.box {
+  background-color: pink;
+  color: white;
+  margin: auto;
+  overflow-wrap: break-word;
+  height: auto;
+  max-width: 80%;
+  max-height: 80%;
+}

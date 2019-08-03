@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrp6 {
+  height: 100vh;
+  background: #b9b9b9;
+  /* 兼容display:flex */
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  /* 兼容align-items: center; */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  /* 兼容justify-content: center; */
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.box6 {
+  width: 50vw;
+  height: 50vh;
+  background-color: pink;
+  color: white;
+}
