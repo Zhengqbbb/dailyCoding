@@ -1,0 +1,81 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>左边定宽度</title>
+  <style>
+    .parent {
+      position: relative;
+    }
+
+    .left {
+      background: pink;
+      position: absolute;
+      left: 0;
+      width: 500px;
+    }
+
+    .right {
+      background: pink;
+      position: absolute;
+      left: 520px;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent">
+    <div class="left">
+      <p>left</p>
+    </div>
+    <div class="right-fix">
+      <div class="right">
+        <p>right</p>
+        <p>right</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>左边不定宽度</title>
+  <style>
+    .left {
+      background: pink;
+      float: left;
+      width: 100px;
+      margin-right: 20px; 
+    }
+
+    .right {
+      background: pink;
+      overflow: hidden; 
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent">
+    <div class="left">
+      <p>left</p>
+    </div>
+    <div class="right">
+      <p>right</p>
+      <p>right</p>
+    </div>
+  </div>
+</body>
+
+</html>
