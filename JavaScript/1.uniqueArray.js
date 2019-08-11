@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-08-11 17:19:31 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-08-11 18:19:45
+ * @Last Modified time: 2019-08-11 18:43:07
  * 数组去重的方式
  */
 var a = [3, 62, 3, 38, 20, 42, 14, 5, 38, 29, 42];
@@ -75,3 +75,31 @@ function uniqueArray4(arr) {
 }
 
 console.log(uniqueArray4(a));
+
+//如果是一个复杂的数组
+var array = [
+  { name: "cayley", from: "BeiJing" },
+  { name: "tom", from: "ShangHai" },
+  { name: "cayley", from: "BeiJing" },
+]
+/**上面这个方法呢利用Object.keys()
+ * 这个方法枚举我们去重后的一个对象hash，
+ * 这个方法返回一个属性列表数组，
+ * 之后我们利用数组的map()方法遍历并且给每一项执行一个callback,
+ * map()会返回一个新的数组
+ * @param  {} arr
+ */
+function removeRepeatArr(arr) {
+  let hash = {};
+  arr.forEach(item => {
+    hash[JSON.stringify(item)] = item; //重复对象覆盖
+  });
+
+  arr = Object.keys(hash).map((data) => { //枚举对象属性然后遍历
+    return JSON.parse(data);
+  });
+
+  return arr;
+}
+
+console.log(removeRepeatArr(array))
