@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-08-12 04:16:24 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-08-17 23:41:00
+ * @Last Modified time: 2019-08-18 00:58:08
  * 排序算法练习
  */
 
@@ -40,6 +40,9 @@ var bubbleSort = function(arr) {
  * <1>.初始状态：无序区为R[1..n]，有序区为空；
  * <2>.第i趟排序(i=1,2,3...n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；
  * <3>.n-1趟结束，数组有序化了。
+ * 最佳情况：T(n) = O(n2)
+ * 最差情况：T(n) = O(n2)
+ * 平均情况：T(n) = O(n2)
  * @param  {} arr
  */
 var selectionSort = function(arr) {
@@ -119,14 +122,6 @@ function binaryInsertionSort(arr) {
 }
 
 
-
-
-
-
-
-
-
-
 //--------------快速排序-------------------
 /**
  * <1>.从数列中挑出一个元素，称为 "基准"（pivot）；
@@ -158,4 +153,32 @@ var quickSort = function(arr) {
   }
   //递归分治
   return quickSort(left).concat(midIndexVal, quickSort(right));
+}
+
+//--------------三路快排-------------------
+/**
+ * 三路快速排序是快速排序的的一个优化版本， 将数组分成三段， 即小于基准元素、 等于 基准元素和大于基准元素， 这样可以比较高效的处理数组中存在相同元素的情况,其它特征与快速排序基本相同。
+ * 随机选取基准值base(支点随机选取),参考快速排序算法的优化思路总结
+ * 配合着使用插入排序(当问题规模较小时，近乎有序时，插入排序表现的很好)
+ * 当大量数据，且重复数多时，用三路快排
+ * @param  {} arr
+ */
+var quickSortThreeWay = function(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+  var left = [];
+  var center = [];
+  var right = [];
+  var pivot = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else if (arr[i] === pivot) {
+      center.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return [...quickSortThreeWay(left), ...center, ...quickSortThreeWay(right)];
 }
