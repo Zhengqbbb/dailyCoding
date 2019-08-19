@@ -2,13 +2,14 @@
  * @Author: qbenben 
  * @Date: 2019-08-18 01:00:28 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-08-18 01:39:18
+ * @Last Modified time: 2019-08-18 18:24:22
  * 二分查找
  */
 
 var arrayTest = [2, 3, 5, 7, 11, 13, 17];
 
 /**
+ * 时间复杂度：O(logn)
  * 递归二分查找
  * @param  {} target 目标值
  * @param  {} arr    查找的数组
@@ -28,6 +29,8 @@ var binarySearch_1 = function(target, arr, start, end) {
     return binarySearch_1(target, arr, start, mid - 1);
   }
 }
+
+console.log(binarySearch_1(7, arrayTest));
 /**
  * 非递归二分查找
  * @param  {} target
@@ -50,3 +53,4 @@ var binarySearch_2 = function(target, arr, start, end) {
   }
   return `The Array do not have ${target}`;
 }
+console.log(binarySearch_2(2, arrayTest));
