@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="唯美美妆 - 全球美妆海外购，国际转运香港直发，最放心的美妆海外购平台，100%正品信赖">
+  <meta name="description" keywords="网上购物 团购 商城 购物 美妆 奢侈品 海淘 化妆品 晒单社区 精品推荐 特卖 化妆教程 美妆视频 极速免税 海外购 境外购 时尚女性 限时特卖 美容护肤 化妆视频 化妆品海淘 美妆海淘">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <title>8·18提前购</title>
+  <link type="image/x-icon" href="https://assets.vmei.com/images/favicon.ico" rel="shortcut icon">
+  <style type="text/css">
+    .z-loading {
+      position: relative;
+    }
+
+    .z-loading:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      z-index: 2;
+      background-image: url(https://act.vmei.com/web/m/act/images/loadingPage.gif);
+      background-repeat: no-repeat;
+      background-size: 10%;
+      background-position: center center;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    body.z-loading:before {
+      position: fixed;
+    }
+  </style>
+  <script type="text/javascript">
+    var a = null,
+      g = {},
+      e = window.location.href,
+      f = e.lastIndexOf("/") + 1,
+      d = e.lastIndexOf("ios");
+    linkid = -1 != d ? "" + parseInt(e.substring(f, d - 1).match(/^\d+/g)) : "" + parseInt(e.substring(f, e.length).match(/^\d+/g));
+    var c = document.querySelector("a.openapplink");
+    var trunkAppParm = [{
+      mlink: "http://a.mlinks.cc/AaXE",
+      button: c,
+      autoLaunchApp: false,
+      autoRedirectToDownloadUrl: true,
+      downloadWhenUniversalLinkFailed: true,
+      inapp: false,
+      params: {
+        callType: "url",
+        actLinkStr: "",
+        url: e
+      }
+    }];
+    window.onload = function() {
+      var html = document.getElementsByTagName("html")[0]
+      var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+      DW = DW > 640 ? 640 : DW;
+      var remPer = (DW / 7.5) + "px";
+      html.style.fontSize = remPer;
+      document.querySelector("#app").style.display = "block";
+      document.querySelector("body").className = document.querySelector("body").className.replace('z-loading', " ");
+      window.onresize = (function() {
+        var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+        DW = DW > 640 ? 640 : DW;
+        var remPer = (DW / 7.5) + "px";
+        html.style.fontSize = remPer;
+      })
+    }
+  </script>
+</head>
+
+<body class="z-loading" style="background: #D09963;">
+  <section id="app" v-cloak class="primary" style="display:none;">
+    <div class="rule_page" v-if="showRule">
+      <div class="ruleImgcon">
+        <!-- <img width="100%" src="../images/newactive/rulePage.jpg?v=2" /> -->
+        <div class="rule_close" @click="showRule=false">x</div>
+      </div>
+    </div>
+    <div :class="{'over-hidden':isShowRule}">
+      <div class="bannerImg">
+        <img src="../images/newactive/bbanner.png?v=4" alt="">
+        <!-- <div class="packet_btn" @click="goToRedBag"></div>
+            <div class="packet_btn" style="left:160px;" @click="goAll('720girlCrazy/dist/daydayRedBag')"></div>
+            <div class="packet_btn" style="left:262px;" @click="goAll('720girlCrazy/dist/coupon')"></div> -->
+        <!--<img src="../images/newactive/avtive.png" alt="">-->
+      </div>
+
+      <!-- 距离活动倒计时 -->
+      <!-- <div class="activeStart" v-if="activeClose">
+        <span>距离七夕活动仅剩： </span>
+        <span>
+          <span class="u-time1" v-if="timeStart.day !=0">{{timeStart.day | formatDate}}</span>
+          <span v-if="timeStart.day !=0">天</span>
+          <span class="u-time2" >{{timeStart.hour | formatDate}}</span>
+          <span>时</span>
+          <span class="u-time3">{{timeStart.min | formatDate}}</span>
+          <span>分</span>
+          <span class="u-time4">{{timeStart.second | formatDate}}</span>
+          <span>秒</span>
+        </span>
+      </div> -->
+
+
+      <!-- 优惠券 -->
+      <div class="coupon-item">
+        <div class="item" v-for='(item,index) in coupons' :key='item.id' :class="[index == 0 ? 'item1' : (index == 1)?'item2':(index == 2)?'item3':(index == 3)?'item4':(index == 4)?'item5':(index == 5)?'item6':(index == 6)?'item7':'item8', !item.isReceive && !item.isNomore ? 'status1' : item.canReceive==false ? 'status3' : item.isNomore? 'status2' :'status1']" @click="getCoupon(item.id,item)"></div>
+        <!-- <div class="item" v-for='(item,index) in coupons' :key='item.id' :class="[index == 0 ? 'item1' : (index == 1)?'item2':(index == 2)?'item3':(index == 3)?'item4':(index == 4)?'item5':(index == 5)?'item6':(index == 6)?'item7':'item8', !item.isReceive && !item.isNomore ? 'status1' : item.isReceive ? 'status3' : 'status2' ]" @click="getCoupon(item.id,item)"></div> -->
+        <div class="itemall" @click="getAllcoupon()"></div>
+        <img src="../images/newactive/group.png" alt=" " />
+      </div>
+
+
+
+      <!--<div v-if="!secKilHide">-->
+      <div v-if="false">
+        <div class="secKill-time">
+          <div class="m-title">
+            <div class="l-title-text">超级秒杀 &nbsp;&nbsp; >></div>
+
+          </div>
+          <div class="m-time">
+            <span v-if="(itemIsStart == 0)">距开始仅剩</span>
+            <span v-if="(itemIsStart == 1)">距结束仅剩</span>
+            <span v-if="(itemIsStart == 2)">秒杀已结束，活动价购买</span>
+
+            <span v-if="itemIsStart !=2">
+              <span class="u-time1" v-if="time.day !=0">{{time.day | formatDate}}</span>
+              <span v-if="time.day !=0">天</span>
+              <span class="u-time2">{{time.hour | formatDate}}</span>
+              <span>时</span>
+              <span class="u-time3">{{time.min | formatDate}}</span>
+              <span>分</span>
+              <span class="u-time4">{{time.second | formatDate}}</span>
+              <span>秒</span>
+            </span>
+
+          </div>
+
+        </div>
+        <div class="secKill-title" id="secKill-title">
+          <div class="overCon">
+            <div class="title-item" v-for="(item,index) in dayTime" :class="{'active' : secKilIndex == index}" @click="changesecKill(index)">
+              <div>{{item.dayTime}}</div>
+              <div>{{item.time}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-container secKill-pro" :class="{'z-loading':secKillloadingData}" style="min-height: 1rem;background: #B5515B;">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for='(product,index) in swiperListData' :key='index*2' @click='goToPage(product.productId,"product",product.skuId,product.supplierId)'>
+              <div class="img-item">
+                <div class="img-icon" v-if="product.tagName">{{product.tagName}}</div>
+                <img style="background: white;" :src="product.pictureUrl + '?x-oss-process=image/resize,p_50'">
+                <img src="../images/soldout.png" alt="" class="z-empty" v-if="product.storage < 1">
+                <img src="../images/not_start.png" alt="" class="z-empty" v-if="!product.isStart">
+              </div>
+              <div class="item-bottom">
+                <div class="product-name">{{product.promotionTempName || product.name}}</div>
+                <div class="price-item">
+                  <div class="item-big-price"><span>￥</span>{{product.futurePrice || product.price | formatMoney}}</div>
+                  <div class="swiper-btn">抢</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 美妆团链接 -->
+      <div class="m-vmact beauty-vmact">
+        <img src="../images/newactive/group-2.png?v=1" alt="">
+        <div class="itemg">
+          <div class="item1" @click="goToPage('599','vmact')"></div>
+          <div class="item1" @click="goToPage('736','vmact')" style="left:34%;"></div>
+          <div class="item1" @click="goToPage('477','vmact')" style="left: 66%;"></div>
+          <div class="item1" @click="goToPage('597','vmact')" style="top: 67%;left:1%;width: 97%;"></div>
+        </div>
+      </div>
+
+      <div style="position: relative;">
+        <img src="../images/newactive/group-3.png?v=1" alt="">
+        <div class="groupitem" style="height: 100%; position: absolute; background: none;">
+          <div class="item" @click="goToPage('598','vmact')" style="position: absolute;"></div>
+          <div class="item" @click="goToPage('422','vmact')" style="left:35%;position: absolute;"></div>
+          <div class="item" @click="goToPage('1103','vmact')" style="left: 67%;position: absolute;"></div>
+          <div class="item" @click="goToPage('665','vmact')" style="top:36%;position: absolute;"></div>
+          <div class="item" @click="goToPage('602','vmact')" style="left:35%;top:36%;position: absolute;"></div>
+          <div class="item" @click="goToPage('960','vmact')" style="left: 67%;top:36%;position: absolute;"></div>
+          <div class="item" @click="goToPage('594','vmact')" style="top:68%;position: absolute;"></div>
+          <div class="item" @click="goToPage('595','vmact')" style="left:35%;top:68%;position: absolute;"></div>
+          <div class="item" @click="goToPage('596','vmact')" style="left: 67%;top:68%;position: absolute;"></div>
+        </div>
+      </div>
+
+
+
+    </div>
+    </div>
+    <br>
+
+    <!-- 导航 -->
+    <div class="m-tabs-box tabs-two" :class="{'z-fixed' : fixTab}">
+      <div class="m-tabs">
+        <ul>
+          <li v-if='isShowDrop'>切换分类</li>
+          <li :class="{'active' : item.active}" v-for="(item,index) in channel_tabs" :key='index*5' @click="setTab(index)" v-if='!isShowDrop'>
+            <img src="https://act.vmei.com/web/m/act/2018/doubleTwelve/image/address-icon.png" alt="" v-if="item.active">
+            <a :href="'#' + item.id"> {{item.name}}</a>
+          </li>
+        </ul>
+        <div class="u-icon" :class="{ 'active' : isShowDrop}" @click='showDrop'><img src="https://act.vmei.com/web/m/act/2018/autumnChristmas/image/arrow-icon.png" alt=""></div>
+      </div>
+
+      <div class="m-drop" v-if='isShowDrop' :class="{ 'active' : fixTab}">
+        <ul>
+          <li :class="{'active' : item.active}" class="u-item" v-for="(item,index) in channel_tabs" :key='index*5' @click="setTab(index)">
+            <!-- <img src="https://act.vmei.com/web/m/act/2018/doubleTwelve/image/address-icon.png" alt="" v-if="item.active"> -->
+            <a :href="'#' + item.id"> {{item.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 商品瀑布流 -->
+    <section class="m-prodList" :class="{'z-loading':prodListloadingData}" style="min-height: 1rem;">
+      <div class="m-channel" v-for='(item,index) in prodList' :key='item.id' :id='item.id'>
+        <div class="u-title">
+          <span>❤ {{item.name}} ❤</span>
+        </div>
+
+        <ul class="m-list">
+          <li v-for='(prod,index) in item.productList' :key='prod.productId' @click='goToPage(prod.productId,"product",prod.skuId,prod.supplierId)'>
+            <div class="u-img">
+              <div class="img-icon" v-if="prod.tagName">{{prod.tagName}}</div>
+              <img class="img" alt="" v-lazy="prod.pictureUrl + '?x-oss-process=image/resize,p_50'">
+              <!-- <div class="u-tag" v-if="prod.tagName">{{prod.tagName}}</div> -->
+              <img src="../images/soldout.png" alt="" class="z-empty" v-if="prod.storage < 1">
+            </div>
+            <div class="u-name">{{prod.promotionTempName || prod.name}}</div>
+            <div class="m-price">
+              <span class="u-icon">￥<span class="u-price">{{prod.price | formatMoney}}</span>
+                <!-- <span class="originPrice">￥<span>{{prod.price | formatMoney}}</span> -->
+              </span>
+              <div class="u-btn">立即购买</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    </div>
+    <!-- 规则弹窗 -->
+    <!-- <div @click='showRule()'>
+      <img src="../images/preheat/rule.png" alt="" class="rule-btn">
+    </div> -->
+    <!-- <transition name="scroll">
+      <div class="m-rule" v-if="isShowRule">
+        <img @click="showRule" src="../images/preheat/wu_rule.png" alt="">
+      </div>
+    </transition> -->
+
+    <div class="manuAll" :class="{'menufixed' : fixTab1,'addHeight':(fixTab1 && checkPhoneX)}" style="background: #B3505C;">
+      <div class="menuitem">
+        <div class="menu_icon">
+          <img style="width:35%;" src="../images/ic-1.png">
+        </div>
+        <span>主&nbsp;会&nbsp;场</span>
+      </div>
+      <div class="menuitem" @click="goToPage('1135','vmact')">
+        <div class="menu_icon">
+          <img width="25%" src="../images/ic-2.png">
+        </div>
+        <span>爆款清单</span>
+      </div>
+      <div class="menuitem" @click="goToPage('1103','vmact')">
+        <div class="menu_icon">
+          <img style="width:25%" src="../images/ic-3.png">
+        </div>
+        <span>爆款口红</span>
+      </div>
+      <div class="menuitem" @click="goToPage('736','vmact')">
+        <div class="menu_icon">
+          <img style="width:25%" src="../images/ic-4.png">
+        </div>
+        <span>人气榜top50</span>
+      </div>
+
+      <!-- <div class="footDrop" v-if="showFootDrop">
+          <div class="sceneList">
+            <ul>  
+              <li @click="goAll('87qixi/dist/allScend','baokuanv')">
+                <img src="../images/allscend/ic-baokuan.png">
+              </li>
+              <li @click="goAll('87qixi/dist/allScend','wuzhe')">
+                <img src="../images/allscend/ic-wuzhe.png">
+              </li>
+              <li @click="goAll('87qixi/dist/allScend','liangban')">
+                <img src="../images/allscend/ic-liangban.png?v=1">
+              </li>
+              <li @click="goAll('87qixi/dist/allScend','vip')" class="no_border">
+                <img src="../images/allscend/ic-vip.png">
+              </li>
+              <li @click="goAll('87qixi/dist/allScend','kouhong')" class="no_border">
+                <img src="../images/allscend/ic-kouhong.png">
+              </li>
+              <li @click="goAll('87qixi/dist/allScend','zhekou')" class="no_border">
+                <img src="../images/allscend/ic-zhekou.png">
+              </li>
+            </ul>
+          </div>
+      </div> -->
+      <div class="shadowDiv"></div>
+    </div>
+
+    <div @click="goIndex" v-if="platform != 'app'">
+      <img src="../images/newactive/footbtn.jpg?v=1" alt="" />
+    </div>
+
+    <transition name="fade">
+      <toast-box :content='toast' v-if='toast'></toast-box>
+    </transition>
+
+  </section>
+
+  <script>
+    var systemDomain = 'https://m.vmei.com'
+  </script>
+
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js" type="text/javascript"></script>
+  <script type=text/javascript src="https://assets.vmei.com/libs/vue@2.5/vue.min.js"></script>
+  <script type=text/javascript src="https://assets.vmei.com/libs/axios/axios.min.js"></script>
+  <script type=text/javascript src="https://assets.vmei.com/libs/vue-lazyload/vue-lazyload.js"></script>
+  <script type="text/javascript" src="https://act.vmei.com/web/turnAppjs/loadMlink.js"></script>
+  <script>
+    // let hasQuo = window.location.href.indexOf('?') > -1;
+    // let ios = hasQuo ? "&ios" : "?ios";
+    // if(window.location.search.indexOf("ios")!=-1){
+    //     document.querySelector(".recommendown").style.display ="none";
+    // }else{
+    //     document.querySelector("#linkOpenApp").addEventListener("onclick",loadTrunkApp,false);
+    // }
+    // function loadTrunkApp(){
+    //   var url='https://static.mlinks.cc/scripts/dist/mlink.min.js';
+    //   loadJsAsync(url,function(){
+    //     document.querySelector("#linkOpenApp").removeEventListener("onclick",loadTrunkApp,false);
+    //     var f, g, c = window.location.href,
+    //         d = c.lastIndexOf("/") + 1,
+    //         e = c.lastIndexOf("ios");
+    //     linkid = -1 != e ? "" + parseInt(c.substring(d, e - 1).match(/^\d+/g)) : "" + parseInt(c.substring(d, c.length).match(/^\d+/g)),
+    //       f = document.querySelector("a.openapplink"),
+    //       g = [{
+    //         mlink: "http://a.mlinks.cc/AaXE",
+    //         button: f,
+    //         params: {
+    //           callType: "web",
+    //           actLinkStr: "",
+    //           weburl: c + ios
+    //         }
+    //       }], new Mlink(g);
+    //       // setTimeout(function(){
+    //         document.querySelector("#linkOpenApp").click();
+    //       // },1000)
+
+    //   })
+    // }
+    // function loadJsAsync(url,fun){
+    //     var body = document.getElementsByTagName('body')[0];
+    //     var jsNode = document.createElement('script');
+    //     jsNode.setAttribute('type', 'text/javascript');
+    //     jsNode.setAttribute('src', url);
+    //     body.appendChild(jsNode);
+    //     if (jsNode.onload) {
+    //         jsNode.onload = function() {
+    //             fun();
+    //         }
+    //     } else {
+    //         jsNode.onreadystatechange = function() {
+    //             if(jsNode.readyState == 'loaded' || jsNode.readyState == 'complete') {
+    //                 fun();
+    //             }
+    //         }
+    //     }
+    // }
+  </script>
+  <script>
+    var _mtac = { "performanceMonitor": 1 };
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500662296");
+      mta.setAttribute("cid", "500662301");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+</body>
+
+</html>

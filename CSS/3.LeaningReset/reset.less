@@ -1,0 +1,147 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
+body{background:#fff;}
+a,a:hover{color:#333;}
+img{
+    display: block;
+    width: 100%;
+}
+body{
+  max-width: 640px;
+  margin: 0 auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/*新版头部样式 by hgy 2018-4-20*/
+.recommendown {
+    background: #e8345f;
+    background: -moz-linear-gradient(left, #e8345f 0%, #ec6b4e 76%);
+    background: -webkit-linear-gradient(left, #e8345f 0%,#ec6b4e 76%);
+    background: linear-gradient(to right, #e8345f 0%,#ec6b4e 76%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8345f', endColorstr='#ec6b4e',GradientType=1 );
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    position: relative;
+    overflow: hidden; }
+  .recommendown .logo {
+    float: left;
+    overflow: hidden;
+  }
+  .recommendown .logo .two-line{
+    line-height: 20px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    justify-content: center;
+    margin-left: 7px;
+  }
+  .recommendown .logo .two-line p{
+    text-align: left;
+    margin-bottom: 0;
+  
+  }
+  .recommendown .logo .two-line p:first-child{
+    font-size: 16px;
+    color: #fff;
+  }
+  .recommendown .logo .two-line p:last-child{
+    color: #f5bdc4;
+    font-size: 12px;
+  }
+
+  .recommendown .logo img {
+    float: left;
+    width: 50px;
+    height: 50px; }
+  .recommendown .desc {
+    float: left;
+    margin-left: 10px;
+    color: #fff; }
+  .recommendown .desc p {
+    margin: 0;
+    font-size: 16px; }
+  .recommendown .down {
+    float: right !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    padding: 5px 15px !important;
+    border-radius: 35px !important;
+    margin: 11px 0 0 0 !important;
+    background: none !important;
+  }
+  @media screen and (max-width:340px){
+    .recommendown .logo .two-line p:first-child{
+      font-size: 13px;
+      color: #fff;
+    }
+    .recommendown .logo .two-line p:last-child{
+      color: #f5bdc4;
+      font-size: 10px;
+    }
+    .recommendown .down{
+      padding: 4px 10px !important;
+    }
+  }
+  .data-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background: #430036;
+  }
+  
+  .data-loading__spin {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-left-color: transparent;
+    border-radius: 50%;
+    will-change: transform;
+    animation: rotate 1s linear infinite;
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .m-toast{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #333;
+    color: #fff;
+    font-size: 0.3rem;
+    padding: 5px 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    z-index: 5555;
+  }
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
