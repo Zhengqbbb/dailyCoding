@@ -327,11 +327,16 @@ var app = new Vue({
     },1000)*/
   },
   methods: {
+    /**
+     * 跳转活动页
+     * @param  {} url 活动页url
+     * @param  {} type 活动字段
+     */
     goAll(url,type){
       if(type){
         //如果有type
         if (this.platform === 'wechat') {
-          location.href = 'https://m.vmei.com/special/2019/'+url+'?type='+type
+          location.href = ' '+url+'?type='+type
       } else if (this.platform === 'miniApp' || this.platform === 'toutiao') {
         let chatSessionKey = this.getQueryString('chatSessionKey') || ''
         location.href = 'https://act.vmei.com/web/m/act/2019/'+url+'.html?type='+type+'&chatSessionKey=' + chatSessionKey
@@ -352,6 +357,7 @@ var app = new Vue({
         }
       }
     },
+    //返回首页
     goIndex(){
       if (this.platform === 'wechat' || this.platform === 'other') {
           location.href = 'https://m.vmei.com/'
@@ -361,6 +367,7 @@ var app = new Vue({
           })
       }   
     },
+     //跳转领劵
     goCoupon(){
       let theme=this.theme
       if (this.platform === 'wechat') {
@@ -373,6 +380,7 @@ var app = new Vue({
           location.href = 'https://act.vmei.com/web/m/act/2019/'+theme+'/dist/coupon.html'
         }
     },
+    //判断iphone手机
     checkPhone(){
       // iPhone X、iPhone XS
       let isIPhoneX = /iphone/gi.test(window.navigator.userAgent) && window.devicePixelRatio && window.devicePixelRatio === 3 && window.screen.width === 375 && window.screen.height === 812;
@@ -384,6 +392,11 @@ var app = new Vue({
         this.checkPhoneX=true;
       }
     },
+    /**
+     * 获取秒杀列表时间
+     * @param  {} secID
+     * @param  {} fun
+     */
     getSecKilListData(secID,fun){
       let _this=this;
       // 获取限时秒杀数据653
@@ -403,7 +416,11 @@ var app = new Vue({
           console.log(res);
         })
     },
-    //分会场swiper
+    /**
+     * 分会场swiper
+     * @param  {} secID 商品时间
+     * @param  {} num   商品序列号
+     */
     getSwiperGroupData(secID,num){
       let _this=this;
       axios.get(domain + `/vmeiActivity/${secID}/20181111`)
@@ -416,6 +433,9 @@ var app = new Vue({
           console.log(res);
         })
     },
+    /**
+     * 获取秒杀时间列表
+     */
     setSecKilTimeList(){
       let array=[16,17,18,19];
       let obj={};
