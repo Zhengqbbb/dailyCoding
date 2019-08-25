@@ -330,13 +330,13 @@ var app = new Vue({
     /**
      * 跳转指定页面
      * @param  {} url location.href = 'https://act.vmei.com/web/m/act/2019/'+（url）+'.html
-     * @param  {} type
+     * @param  {} type 活动字段
      */
     goAll(url,type){
       if(type){
         //如果有type
         if (this.platform === 'wechat') {
-          location.href = 'https://m.vmei.com/special/2019/'+url+'?type='+type
+          location.href = ' '+url+'?type='+type
       } else if (this.platform === 'miniApp' || this.platform === 'toutiao') {
         let chatSessionKey = this.getQueryString('chatSessionKey') || ''
         location.href = 'https://act.vmei.com/web/m/act/2019/'+url+'.html?type='+type+'&chatSessionKey=' + chatSessionKey
@@ -385,7 +385,7 @@ var app = new Vue({
         }
     },
     /**
-     * 查看是iphone几
+     * 判断iphone手机
      */
     checkPhone(){
       // iPhone X、iPhone XS
