@@ -327,6 +327,11 @@ var app = new Vue({
     },1000)*/
   },
   methods: {
+    /**
+     * 跳转指定页面
+     * @param  {} url location.href = 'https://act.vmei.com/web/m/act/2019/'+（url）+'.html
+     * @param  {} type
+     */
     goAll(url,type){
       if(type){
         //如果有type
@@ -352,6 +357,9 @@ var app = new Vue({
         }
       }
     },
+    /**
+     * 返回唯美官网首页
+     */
     goIndex(){
       if (this.platform === 'wechat' || this.platform === 'other') {
           location.href = 'https://m.vmei.com/'
@@ -361,6 +369,9 @@ var app = new Vue({
           })
       }   
     },
+    /**
+     * 跳转优惠券页面
+     */
     goCoupon(){
       let theme=this.theme
       if (this.platform === 'wechat') {
@@ -373,6 +384,9 @@ var app = new Vue({
           location.href = 'https://act.vmei.com/web/m/act/2019/'+theme+'/dist/coupon.html'
         }
     },
+    /**
+     * 查看是iphone几
+     */
     checkPhone(){
       // iPhone X、iPhone XS
       let isIPhoneX = /iphone/gi.test(window.navigator.userAgent) && window.devicePixelRatio && window.devicePixelRatio === 3 && window.screen.width === 375 && window.screen.height === 812;
@@ -384,6 +398,11 @@ var app = new Vue({
         this.checkPhoneX=true;
       }
     },
+    /**
+     * 获取秒杀的商品列表
+     * @param  {} secID 商品ID
+     * @param  {} fun 回调函数
+     */
     getSecKilListData(secID,fun){
       let _this=this;
       // 获取限时秒杀数据653
@@ -403,7 +422,11 @@ var app = new Vue({
           console.log(res);
         })
     },
-    //分会场swiper
+    /**
+     * 分会场swiper
+     * @param  {} secID 商品的ID
+     * @param  {} num 是轮播图的第几张
+     */
     getSwiperGroupData(secID,num){
       let _this=this;
       axios.get(domain + `/vmeiActivity/${secID}/20181111`)
@@ -416,6 +439,10 @@ var app = new Vue({
           console.log(res);
         })
     },
+    /**
+     * 设置秒杀时间 
+     * 修改： array修改日期，key的月份，letTime里面的时间，Date里面的时间
+     */
     setSecKilTimeList(){
       let array=[16,17,18,19];
       let obj={};
@@ -431,6 +458,10 @@ var app = new Vue({
       console.log(obj);
       this.secKilTimeList=obj;
     },
+    /**
+     * 获取服务器时间
+     * @param  {} fun 修改mounted回调函数
+     */
     getServiceTime(fun){
       let _this = this
       _this.isLoad = true
@@ -446,7 +477,11 @@ var app = new Vue({
           console.log(res);
         })
     },
-    //活动时间
+    
+    /**
+     * 活动时间
+     * @param  {} timeStamp 时间戳
+     */
     activeCountDown(timeStamp){
       var _this = this;
       let timeLimitHours = Math.floor(timeStamp / 3600)
@@ -467,7 +502,11 @@ var app = new Vue({
         _this.activeClose=false;
       }
     },
-    //秒杀时间
+    /**
+     * 秒杀时间
+     * @param  {} timeStamp 时间戳
+     * @param  {} nowTime   服务器传回的当前时间
+     */
     countDown(timeStamp,nowTime){
       var _this=this;
       let timeLimitHours = Math.floor(timeStamp / 3600)
@@ -502,13 +541,22 @@ var app = new Vue({
         }
       }
     },
+    /**
+     * 显示规则图
+     */
     showRule() {
       this.isShowRule = !this.isShowRule
     },
     showEntry() {
       this.isShowEntry = !this.isShowEntry
     },
-    //toast调用
+    
+    /**
+     * toast调用
+     * 显示消息
+     * @param  {} content 内容
+     * @param  {} time    显示内容在多久之后，默认2s
+     */
     showToast(content,time) {
       this.toast = content
       let _this = this
@@ -516,7 +564,10 @@ var app = new Vue({
         _this.toast = ''
       }, time || 2000)
     },
-    // 切换限时秒杀
+    /**
+     * 切换限时秒杀
+     * @param  {} index 当前秒杀商品的序列号
+     */
     changesecKill(index) {
       const _this = this;
       _this.secKilIndex = index;
@@ -567,7 +618,9 @@ var app = new Vue({
         _this.countDown(timeStamp,_this.nowTime)
       }, 1000)
     },
-    //一键领取
+    /**
+     * 一键领取
+     */
     getAllcoupon(){
       var lend=this.coupons.length-1;
       for(let i=0; i<this.coupons.length; i++){
@@ -581,6 +634,11 @@ var app = new Vue({
       },1500*_index)
     },
     //获取优惠券
+    /**
+     * @param  {} id 优惠券
+     * @param  {} item  
+     * @param  {} type
+     */
     getCoupon(id,item,type) {
       let _this = this
       let couponValue=_this.couponValue
@@ -629,7 +687,9 @@ var app = new Vue({
         _this.showToast(res.data.msg)
       })
     },
-    // 加载优惠券  无优惠券的活动屏蔽相关引用
+    /**
+     * 加载优惠券  无优惠券的活动屏蔽相关引用
+     */
     loadCoupon() {
       let url
       let _this = this
@@ -651,6 +711,10 @@ var app = new Vue({
           console.log(url+' '+res);
         })
     },
+    /**
+     * @param  {} e 查询字段
+     * @param  {} t 调用者 默认：window.location.search（从问号 (?) 开始的 URL（查询部分））
+     */
     getQueryString(e, t) {
       var n = new RegExp("(^|\\?|&)" + e + "=([^&]*)(&|$)", "i"),
         t = t || window.location.search,
@@ -811,7 +875,13 @@ var app = new Vue({
       n = n.toString()
       return n[1] ? n : '0' + n
     },
-   // 控制链接跳转
+    /**
+     * 控制链接跳转
+     * @param  {} linkid 商品ID
+     * @param  {} type   是美妆团还是商品
+     * @param  {} skuId  每种产品均对应有唯一的SKU号
+     * @param  {} supplierId 供应商ID
+     */
     goToPage(linkid, type,skuId,supplierId) {
       var _this = this;
       var linkHref
@@ -929,6 +999,10 @@ var app = new Vue({
         }, 20);
       }
     },
+    /**
+     * 设置导航栏菜单
+     * @param  {} index
+     */
     setTab(index) {
       this.channel_tabs.forEach((item) => {
         item.active = false
