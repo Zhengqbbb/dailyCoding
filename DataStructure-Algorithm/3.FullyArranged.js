@@ -2,8 +2,8 @@
  * @Author: qbenben 
  * @Date: 2019-08-15 23:46:52 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-08-18 15:30:58
- * 前端常见数据结构和算法练习
+ * @Last Modified time: 2019-08-27 21:25:04
+ * 全排列练习
  */
 
 //----------------JS的全排列--------------------
