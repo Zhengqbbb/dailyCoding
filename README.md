@@ -43,7 +43,7 @@ DailyDemo: <br>
 | JavaScript  | ├─1.UniqueArray.js<br>├─2.Copy.js<br>├─3.FlattenArrary.js<br>├─4.Extends.js<br>├─5.BindRealization.js<br>├─6.PromiseRealization.js<br>├─ 7.RandomSort.js | 记录奔奔对JavaScript中常见方法的实现 |
 | JD-Demo  | ├─1.css<br>├─2.index.html | 早期制作的纯静态仿站练习 |
 | JQuery  | TODO | 记录奔奔对JQuery的使用 |
-| LeetCode  | TODO | 记录奔奔对LeetCode题型使用JavaScript实现，提高编程能力练习 |
+| LeetCode  | ├─1.twoSum.js<br> | 记录奔奔对LeetCode题型使用JavaScript实现，提高编程能力练习 |
 | MiniResumeDemo  | ├─1.css<br>├─2.index.html | 早期制作的纯静态mini简历网站 |
 | React  | ├─1.react-todo-list<br> | 奔奔对于React.js开发框架的使用练习 |
 | Regular-expression  | TODO | 记录奔奔对于正则表达式的练习 |
