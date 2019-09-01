@@ -40,8 +40,14 @@
 
     Jelly = null;
     Miffy = null;
-    //  console.log(strong)
-    //  console.log(weak)
+     console.log(strong)/* [[Entries]]: Array(1)
+                              0: {Object => "jelly is the best"}
+                              key: {name: "jelly"}
+                              value: "jelly is the best"
+                              length: 1 */
+     console.log(weak) /* [[Entries]]: Array(0)
+                            length: 0 */
+    //所以‘map’可以在内存中引起更多的垃圾。我们可以说“Map”引用是强指针，而“WeakMap”引用是弱指针。
   </script>
 </body>
 
