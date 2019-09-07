@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>H5下拉刷新</title>
+</head>
+
+<body>
+  <main>
+    <p class="refreshText"></p>
+    <ul id="refreshContainer">
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+      <li>444</li>
+      <li>555</li>
+      <li>666</li>
+      <li>777</li>
+      <li>888</li>
+      <li>999</li>
+    </ul>
+  </main>
+
+  <script>
+    (function(window) {
+      var _element = document.getElementById('refreshContainer'),
+        _refreshText = document.querySelector('.refreshText'),
+        _startPos = 0,
+        _transtionHeight = 0;
+
+      _element.addEventListener('touchstart', function(e) {
+        console.log('初始位置:', e.touches[0].pageY);
+        _startPos = e.touches[0].pageY;
+        _element.style.position = 'relative';
+        _element.style.transition = 'transform 0s';
+      }, false);
+
+      _element.addEventListener('touchmove', function(e) {
+        console.log('当前位置', e.touches[0].pageY);
+        _transtionHeight = e.touches[0].pageY - _startPos;
+
+        if (_transtionHeight > 0 && _transtionHeight < 60) {
+          _refreshText.innerText = '下拉刷新';
+          _element.style.transform = 'translateY(' + _transtionHeight + 'px)';
+
+          if (_transtionHeight > 55) {
+            _refreshText.innerText = '释放更新';
+          }
+        }
+      }, false)
+
+      _element.addEventListener('touchend', function(e) {
+        _element.style.transition = 'transform 0.5s ease 1s';
+        _element.style.transform = 'translateY(0px)';
+        _refreshText.innerText = '更新。。。';
+
+
+        ///TODO。。。
+      }, false)
+
+    })(window);
+  </script>
+</body>
+
+</html>
