@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rem适配</title>
+
+  <script>
+  window.onload = function () {  
+    var html = document.getElementsByTagName("html")[0];
+    var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+    DW = DW > 640 ? 640 : DW;
+    var remPer = (DW / 7.5) + "px";
+    html.style.fontSize = remPer;
+    //去掉一些loading动画，初始化一些css
+
+    //检测屏幕尺寸变化同步font-size，如横竖屏切换时触发
+    window.onresize = (function () {  
+      var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+      DW > 640 ? 640 : DW;
+      var remPer = (DW / 7.5) + "px";
+      html.style.fontSize = remPer;
+    })
+  }
+  </script>
+</head>
+<body>
+  <p style="font-size: 0.6rem;">QBQBQBQB加油加油加油</p>
+</body>
+</html>
