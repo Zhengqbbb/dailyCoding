@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-08-12 04:16:24 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-08-20 21:32:57
+ * @Last Modified time: 2019-09-09 22:15:42
  * 排序算法练习
  */
 
@@ -152,6 +152,56 @@ var shellSort = function(arr) {
   console.timeEnd('希尔排序耗时:');
   return arr;
 }
+
+//--------------归并排序-------------------
+/**
+ * 和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，
+ * 因为始终都是O(n log n）的时间复杂度。代价是需要额外的内存空间。
+ * 
+ * <1>.把长度为n的输入序列分成两个长度为n/2的子序列
+ * <2>.对这两个子序列分别采用归并排序；
+ * <3>.将两个排序好的子序列合并成一个最终的排序序列。
+ * 最佳情况：T(n) = O(n)
+ * 最差情况：T(n) = O(nlogn)
+ * 平均情况：T(n) = O(nlogn)
+ * 
+ * 使用递归的归并排序
+ * @param  {} arr 
+ */
+var mergeSort = function(arr) {
+  var len = arr.length;
+  //递归出口
+  if (len < 2) {
+    return arr;
+  }
+  var middle = Math.floor(len / 2),
+    left = arr.slice(0, middle),
+    right = arr.slice(middle);
+  return merge(mergeSort(left), mergeSort(right));
+}
+/**
+ * @param  {} left  左数组
+ * @param  {} right 右数组
+ */
+var merge = function(left, right) {
+  var result = [];
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+
+  while (left.length)
+    result.push(left.shift());
+  while (right.length)
+    result.push(right.shift());
+
+  return result;
+}
+
+console.log(mergeSort(arrTest));
 
 
 
