@@ -1,0 +1,4 @@
+div{width:100px;height:100px;background:red}
+
+body{background:yellow;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
+
