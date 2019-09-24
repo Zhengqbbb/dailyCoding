@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>触底加载</title>
+  <title>触底加载配合节流函数</title>
 </head>
 
 <body>
@@ -71,31 +71,39 @@
   <p>1</p>
 
 
-   <script>
-  var i = 0;
-  window.onscroll = function () {  
-    var scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
-    var scrollTop = document.body.scrollHeight || document.documentElement.scrollHeight;
-    var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
-
-   if(scrollHeight - scrollTop <  clientHeight){
-   // if(clientHeight + scrollTop === scrollHeight){
-      i++;
-      var para = document.createElement("p");
-      var nodes = document.createTextNode(i);
-      para.appendChild(nodes);
-      document.body.appendChild(para);
+  <script>
+    var throttle = function(fn) {
+      let canRun = true;
+      return function() {
+        if (!canRun) {
+          return;
+        }
+        canRun = false;
+        setTimeout(() => {
+          fn.call(this, arguments);
+          canRun = true;
+        }, 100);
+      };
     }
-  }
-  
+    var i = 0;
+    document.addEventListener('scroll', throttle(function() {
+      if (window.scrollY + innerHeight + 500 > document.body.offsetHeight) {
+        i++;
+        var para = document.createElement("p");
+        var nodes = document.createTextNode(i);
+        para.appendChild(nodes);
+        document.body.appendChild(para);
+      }
+    }), false)
+   
   </script>
-
   <!-- <script>
     let html = document.documentElement
     document.body.onscroll = function() {
       html.scrollHeight == html.clientHeight + html.scrollTop && alert('触底了')
     }
   </script> -->
+  
 </body>
 
 </html>
