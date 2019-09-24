@@ -46,3 +46,6 @@ npm install webpack webpack-cli --save-dev
 - <b>postcss-loader autoprefixer</b>可以给自动给样式添加前缀<b>npm i postcss-loader autoprefixer --save-dev</b>需要写一个<b>postcss.config.js</b>配置文件。配置覆盖多少浏览器百分率<b>.browserslistrc</b>则要填写一个这个文件
 - <b>mini-css-extract-plugin</b>css可以和js 一同加载。<b>npm i mini-css-extract-plugin --save-dev</b>在生产环境下使用，并且注意这个还有插件的使用,用来生成对应生产环境的css文件名.
 - <b>optimize-css-assets-webpack-plugin</b>用来打包压缩css成一行<b>npm i optimize-css-assets-webpack-plugin --save-dev</b>不过要注意安装了次插件并声明压缩css代码，则js代码也要手动压缩。<b>terser-webpack-plugin</b>
+- <b>terser-webpack-plugin</b>用来压缩js成一行<b>npm i terser-webpack-plugin -D</b>
+- <b>file-loader</b>可以当前图片拷贝到dist文件下并且把拷贝后的结果返回给调用者，调用者再去引这个结果就可以找到。默认的功能就是拷贝<b>npm i file-loader -D</b>
+- <b>url-loader</b>配合file-loader在图片多少大小以上使用url-loader，多少大小以下使用file-loader，转base64<b>npm i url-loader -D</b>
