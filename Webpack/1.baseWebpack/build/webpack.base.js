@@ -29,11 +29,11 @@ module.exports = (env) => { //env环境变量
           use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
-          test: /\.(woff|ttf|eot|svg)$/,
+          test: /\.(woff|ttf|eot)$/,
           use: 'file-loader'
         },
         {
-          test: /\.(jpe?g|png|gif)$/,
+          test: /\.(jpe?g|png|gif|svg)$/,
           use: {
             loader: 'url-loader',
             options: {
@@ -42,6 +42,10 @@ module.exports = (env) => { //env环境变量
               limit: 1024
             }
           }
+        },
+        {// 解析js文件，默认会调用@babel/core，然后调用.babelrc文件
+          test: /\.js$/,
+          use: 'babel-loader'
         }
       ]
     },

@@ -1,0 +1,17 @@
+{ 
+  //options插件包，多个插件是从下往上执行
+  "presets": [
+    //默认不转换一些高级语法
+    //"@babel/preset-env"
+    //转换一些高级一点的api，"usageBuitIns": "usage"按需加载
+    ["@babel/preset-env",{
+      "useBuiltIns": "usage",
+      "corejs": 2
+    }]
+  ],
+  //plugins单个插件是从上到下执行，可以传参但是要把这个插件放在一个数组中的一项
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", {"legacy": true}],
+    ["@babel/plugin-proposal-class-properties", {"loose": true}]
+  ]
+}

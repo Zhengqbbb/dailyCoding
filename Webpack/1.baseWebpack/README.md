@@ -49,3 +49,10 @@ npm install webpack webpack-cli --save-dev
 - <b>terser-webpack-plugin</b>用来压缩js成一行<b>npm i terser-webpack-plugin -D</b>
 - <b>file-loader</b>可以当前图片拷贝到dist文件下并且把拷贝后的结果返回给调用者，调用者再去引这个结果就可以找到。默认的功能就是拷贝<b>npm i file-loader -D</b>
 - <b>url-loader</b>配合file-loader在图片多少大小以上使用url-loader，多少大小以下使用file-loader，转base64<b>npm i url-loader -D</b>
+- <b>@babel/core</b>babel的核心模块，
+- <b>@babel/preset-env</b>babel预设，包含的所有的es6转换为es5
+- <b>babel-loader</b>是和webpack的桥梁，默认会去调用babel/core，然后babel/core回去调用babale/preset-env来解析es6转换为es5，如果我们如果卸载base之中的配置信息的话会有点多，我们可以写一个<b>.babelrc</b>默认回去调用这个.babelrc文件就是options之中的配置项<b>npm i @babel/core @babel/preset-env babel-loader -D</b>
+- <b>@babel/plugin-proposal-class-properties</b>解析类的属性，解析es6高级一点的语法class等等，单单一个插件可以写在.babelrc文件，loose表示是否要使用宽松模式
+- <b>@babel/plugin-proposal-decorators</b>解析装饰器，当我们在项目当使用了类装饰器等高级语法，要在他执行之前使用，如果我们要保存装饰器的语法，需要添加<b>legacy: true</b>
+- <b>core-js@2</b>babel默认不会转换一些高级一点的api他认为浏览器会自带的，此时我们需要改写一下@babel/preset-env在.babelrc中的写法传入参数"useBuiltIns": "usage"，提示自动转换按需加载，这比babel-polyfill不会污染全局，并且导入包可以按需，可是此时要门需要下载一个类似补丁core-js@2或者core-js@3<b>npm i core-js@2 -D</b>
+
