@@ -36,9 +36,9 @@ npm install webpack webpack-cli --save-dev
 
 ##  插件使用
 
-- <b>webpack-merge</b>如果想要dev文件和prod文件和base合并，可以使用此插件<b>npm i webpack-merge --save-dev</b>循环后面的配置，定义到前面去
-- <b>webpack-dev-server</b>webpack开发服务<b>npm i webpack-dev-server --save-dev</b>把packjson命令改写成webpack-dev-server
-- <b>html-webpack-plugin</b>根据指定模板html文件自动生成html文件并且引入打包后的js内容<b>npm i html-webpack-plugin --save-dev</b>
+- <b>webpack-merge</b> 如果想要dev文件和prod文件和base合并，可以使用此插件 <b>npm i webpack-merge --save-dev</b> 循环后面的配置，定义到前面去
+- <b>webpack-dev-server</b> webpack开发服务<b>npm i webpack-dev-server --save-dev</b>把packjson命令改写成webpack-dev-server
+- <b>html-webpack-plugin</b> 根据指定模板html文件自动生成html文件并且引入打包后的js内容<b>npm i html-webpack-plugin --save-dev</b>
 - <b>clean-webpack-plugin</b>清空某个目录<b>npm i clean-webpack-plugin --save-dev</b>
 - <b>css-loader style-loader</b>处理css，需要两个loader，css-loader会解析css语法，并且会把解析后的结果传递给style-loader，style-loader会将解析的css，变成style标签插入到页面当中<b>此时应该注意，loader有执行顺序，从下到上，从右边到左边</b>，<b>npm i css-loader style-loader --save-dev</b>
 - <b>node-sass,sass-loader</b>如果使用了css预处理器sass<b>npm i node-sass sass-loader --save-dev</b>此时的sass-loader在webpack中主要是匹配scss文件传递给node-sass来处理
@@ -55,4 +55,5 @@ npm install webpack webpack-cli --save-dev
 - <b>@babel/plugin-proposal-class-properties</b>解析类的属性，解析es6高级一点的语法class等等，单单一个插件可以写在.babelrc文件，loose表示是否要使用宽松模式
 - <b>@babel/plugin-proposal-decorators</b>解析装饰器，当我们在项目当使用了类装饰器等高级语法，要在他执行之前使用，如果我们要保存装饰器的语法，需要添加<b>legacy: true</b>
 - <b>core-js@2</b>babel默认不会转换一些高级一点的api他认为浏览器会自带的，此时我们需要改写一下@babel/preset-env在.babelrc中的写法传入参数"useBuiltIns": "usage"，提示自动转换按需加载，这比babel-polyfill不会污染全局，并且导入包可以按需，可是此时要门需要下载一个类似补丁core-js@2或者core-js@3<b>npm i core-js@2 -D</b>
+- <b>@babel/plugin-transform-runtime</b>转换的运行时,可以帮我们注入一些帮助函数，去节约代码（假如我们在a.js中使用的class，在index.js中使用了class语法，那么class语法编译的代码只有一次，减少代码的冗余）。同时要注意这个包需要依赖一个<b>@babel/runtime</b>用来手动解析代码。plugin-transform-runtime会自动去调用runtime，在.babelrc中配置<b>npm i @babel/plugin-transform-runtime -D</b>npm i @babel/runtime --save</b>
 

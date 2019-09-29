@@ -37,4 +37,9 @@ class A {
 
 
 //默认不能转换高级语法，实例上的语法 promise
-[1, 2, 3].includes(1);
+//[1, 2, 3].includes(1);
+
+import './a'
+class A {
+
+}
