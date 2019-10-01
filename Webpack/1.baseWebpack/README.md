@@ -57,3 +57,12 @@ npm install webpack webpack-cli --save-dev
 - <b>core-js@2</b>babel默认不会转换一些高级一点的api他认为浏览器会自带的，此时我们需要改写一下@babel/preset-env在.babelrc中的写法传入参数"useBuiltIns": "usage"，提示自动转换按需加载，这比babel-polyfill不会污染全局，并且导入包可以按需，可是此时要门需要下载一个类似补丁core-js@2或者core-js@3<b>npm i core-js@2 -D</b>
 - <b>@babel/plugin-transform-runtime</b>转换的运行时,可以帮我们注入一些帮助函数，去节约代码（假如我们在a.js中使用的class，在index.js中使用了class语法，那么class语法编译的代码只有一次，减少代码的冗余）。同时要注意这个包需要依赖一个<b>@babel/runtime</b>用来手动解析代码。plugin-transform-runtime会自动去调用runtime，在.babelrc中配置<b>npm i @babel/plugin-transform-runtime -D</b>npm i @babel/runtime --save</b>
 
+## 解析React
+- 环境<b>npm i react react-dom --save</b>还需要一个插件的集合用来解析react，<b>npm i @babel/preset-react -D</b>写在.babelrc文件中应该注意顺序，先解析react，再转换为es5.
+- <b>@babel/preset-typescript</b>babel对ts语法解析做的插件库<b>npm i @babel/preset-typescript -D</b>在base配置中要改入口文件和rules校验tsx语法，然后在.babelrc文件中先把ts转换为js再转换为es5
+- <b>typescript</b>不过我们真的要用typescript校验我们的代码符不符合规范的话，就要使用typescript。不过此时就需要安装@types/react @type/react-dom --save提示行文件，这样每一行代码都有提示效果
+
+## 解析Vue
+- 环境<b>npm i vue --save</b>Vue文件我们也需要安装对应的模块来解析<b>vue-loader 和 vue-template-compiler</b>npm i vue-loader vue-template-compiler -D。然后在base配置中使用vue-loader去调用这些文件解析
+- 如果我们要使用ts来解析Vue文件需要一个垫片<b>vue-shims.d.ts</b>,用来声明.vue文件是什么类型的
+

@@ -4,15 +4,27 @@ const path = require('path');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = (env) => { //env环境变量
   let isDev = env.development; //是不是开发环境
   const base = {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    //entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, '../src/index.ts'),
     module: {
       //转化什么文件，用什么来转，使用哪些loader
       //定义一些规则来定义转什么文件
       //这里就涉及一些loader的写法，可以使用数组的方式多个loader，字符串一个loader，对象需要传递参数
-      rules: [{
+      rules: [
+        {// 解析vue文件,还需要引一个插件VueLoaderPlugin
+          test: /\.vue$/,
+          use: 'vue-loader'
+        },
+        {// 解析tsx文件
+          test: /\.tsx$/,
+          use: 'babel-loader'
+        },
+        {
           test: /\.css$/,
           use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader, {
@@ -58,6 +70,7 @@ module.exports = (env) => { //env环境变量
       !isDev && new MiniCssExtractPlugin({
         filename: 'css/main.css'
       }),
+      new VueLoaderPlugin(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../public/index.html'), //模板
         filename: 'index.html', //生成模板名
