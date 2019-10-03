@@ -47,6 +47,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "typescript": "^3.6.3",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-property-decorator": "^8.2.2"
   }
 }
