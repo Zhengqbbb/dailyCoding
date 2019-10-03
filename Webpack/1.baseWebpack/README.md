@@ -65,5 +65,4 @@ npm install webpack webpack-cli --save-dev
 ## 解析Vue
 - 环境<b>npm i vue --save</b>Vue文件我们也需要安装对应的模块来解析<b>vue-loader 和 vue-template-compiler</b>npm i vue-loader vue-template-compiler -D。然后在base配置中使用vue-loader去调用这些文件解析
 - 如果我们要使用ts来解析Vue文件需要一个垫片<b>vue-shims.d.ts</b>,用来声明.vue文件是什么类型的
-- 如果我们在Vue文件中还需要些TS。如在script标签之中lang="ts"。Vue属性的装饰器写法<b>vue-property-decorator</b>npm i vue-property-decorator --save
-
+- 如果我们在Vue文件中还需要些TS。如在script标签之中lang="ts"。Vue属性的装饰器写法<b>vue-property-decorator</b>npm i vue-property-decorator --save，还需要在.babelrc文件中对"@babel/preset-typescript"进行改写为所有的.vue文件去进行ts编译

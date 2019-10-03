@@ -11,7 +11,9 @@
       "corejs": 2
     }],
     "@babel/preset-react",
-    "@babel/preset-typescript"
+    ["@babel/preset-typescript",{
+      "allExtensions": true
+    }]
   ],
   //plugins单个插件是从上到下执行，可以传参但是要把这个插件放在一个数组中的一项
   "plugins": [
