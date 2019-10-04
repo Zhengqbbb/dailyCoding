@@ -68,10 +68,10 @@ npm install webpack webpack-cli --save-dev
 
 ## 解析React
 - 环境<code>npm i react react-dom --save</code>，还需要一个插件的集合用来解析react，<code>npm i @babel/preset-react -D</code>，写在.babelrc文件中应该注意顺序，先解析react，再转换为es5.
-- <b>@babel/preset-typescript</b>babel对ts语法解析做的插件库<b>npm i @babel/preset-typescript -D</b>在base配置中要改入口文件和rules校验tsx语法，然后在.babelrc文件中先把ts转换为js再转换为es5
-- <b>typescript</b>不过我们真的要用typescript校验我们的代码符不符合规范的话，就要使用typescript。不过此时就需要安装@types/react @type/react-dom --save提示行文件，这样每一行代码都有提示效果
+- <b>@babel/preset-typescript</b>，babel对ts语法解析做的插件库<code>npm i @babel/preset-typescript -D</code>在base配置中要改入口文件和rules校验tsx语法，然后在.babelrc文件中先把ts转换为js再转换为es5
+- <b>typescript</b>，不过我们真的要用typescript校验我们的代码符不符合规范的话，就要使用typescript。不过此时就需要安装@types/react @type/react-dom --save提示行文件，这样每一行代码都有提示效果
 
 ## 解析Vue
-- 环境<b>npm i vue --save</b>Vue文件我们也需要安装对应的模块来解析<b>vue-loader 和 vue-template-compiler</b>npm i vue-loader vue-template-compiler -D。然后在base配置中使用vue-loader去调用这些文件解析
+- 环境<code>npm i vue --save</code>Vue文件我们也需要安装对应的模块来解析，<b>vue-loader 和 vue-template-compiler</b>，<code>npm i vue-loader vue-template-compiler -D</code>。然后在base配置中使用vue-loader去调用这些文件解析
 - 如果我们要使用ts来解析Vue文件需要一个垫片<b>vue-shims.d.ts</b>,用来声明.vue文件是什么类型的
-- 如果我们在Vue文件中还需要些TS。如在script标签之中lang="ts"。Vue属性的装饰器写法<b>vue-property-decorator</b>npm i vue-property-decorator --save，还需要在.babelrc文件中对"@babel/preset-typescript"进行改写为所有的.vue文件去进行ts编译
+- 如果我们在Vue文件中还需要些TS。如在script标签之中lang="ts"。Vue属性的装饰器写法，<b>vue-property-decorator</b><code>npm i vue-property-decorator --save</code>，还需要在.babelrc文件中对"@babel/preset-typescript"进行改写为所有的.vue文件去进行ts编译
