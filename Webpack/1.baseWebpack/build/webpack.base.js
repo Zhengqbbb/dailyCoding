@@ -6,11 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-module.exports = (env) => { //env环境变量
+module.exports = env => { //env环境变量
   let isDev = env.development; //是不是开发环境
   const base = {
     //entry: path.resolve(__dirname, '../src/index.js'),
-    entry: path.resolve(__dirname, '../src/index.ts'),
+    entry: path.resolve(__dirname, "../src/index.ts"),
     module: {
       //转化什么文件，用什么来转，使用哪些loader
       //定义一些规则来定义转什么文件
@@ -21,7 +21,11 @@ module.exports = (env) => { //env环境变量
           use: 'vue-loader'
         },
         {// 解析tsx文件
-          test: /\.tsx$/,
+          test: /\.tsx?$/,
+          use: 'babel-loader'
+        },
+        {// 解析js文件，默认会调用@babel/core，然后调用.babelrc文件
+          test: /\.js$/,
           use: 'babel-loader'
         },
         {
@@ -55,10 +59,6 @@ module.exports = (env) => { //env环境变量
             }
           }
         },
-        {// 解析js文件，默认会调用@babel/core，然后调用.babelrc文件
-          test: /\.js$/,
-          use: 'babel-loader'
-        }
       ]
     },
     output: {
@@ -74,6 +74,10 @@ module.exports = (env) => { //env环境变量
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../public/index.html'), //模板
         filename: 'index.html', //生成模板名
+        minify: !isDev && {
+          removeAttributeQuotes: true,
+          collapseWhitespace: true
+        }
       })
     ].filter(Boolean)
   }
@@ -82,4 +86,4 @@ module.exports = (env) => { //env环境变量
   } else {
     return merge(base, prod)
   }
-}
+};
