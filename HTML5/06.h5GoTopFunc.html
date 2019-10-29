@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>返回顶部函数</title>
+</head>
+<style>
+body{
+    margin: 0;
+    padding: 0;
+}
+</style>
+<body>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <button id="gotop">返回顶部</button>
+
+  <script>
+    var btn = document.querySelector('#gotop');
+    var goTop = function() {
+        var gotop = setInterval(function() {
+        let top = document.documentElement.scrollTop || document.body.scrollTop;
+        let speed = top / 4;
+        if (document.body.scrollTop !== 0) {
+          document.body.scrollTop -= speed;
+        } else {
+          document.documentElement.scrollTop -= speed;
+        }
+        if (top === 0) {
+          clearInterval(gotop);
+        }
+      }, 30);
+    }
+    btn.addEventListener('click', function() {
+      goTop()
+    });
+  </script>
+</body>
+
+</html>
