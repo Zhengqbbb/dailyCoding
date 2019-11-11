@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>规则窗口</title>
+</head>
+<link rel="stylesheet" href="./style.css">
+<script type="text/javascript">
+  window.onload = function() {
+    var html = document.getElementsByTagName("html")[0]
+    var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+    DW = DW > 640 ? 640 : DW;
+    var remPer = (DW / 7.5) + "px";
+    html.style.fontSize = remPer;
+    window.onresize = (function() {
+      var DW = document.documentElement.offsetWidth || document.body.offsetWidth;
+      DW = DW > 640 ? 640 : DW;
+      var remPer = (DW / 7.5) + "px";
+      html.style.fontSize = remPer;
+    })
+  }
+</script>
+
+<body style="background: #fff;">
+  <!-- 规则文字 -->
+  <div class="rule-mask" id="rule-mask" v-show="isShowRule">
+    <div class="rule-container">
+      <div class="rule-box">
+        <div class="rule-title">Title</div>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+        <p>RUle Row</p>
+      </div>
+      <div class="rule-x"></div>
+    </div>
+  </div>
+</body>
+
+</html>
