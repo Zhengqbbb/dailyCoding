@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-11-17 23:55:36 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-11-18 00:08:28
+ * @Last Modified time: 2019-11-18 00:15:29
  * 获取URL(window.location.search)参数方法
  * 从问号 (?) 开始的 URL（查询部分）
  */
@@ -23,4 +23,4 @@ var getQueryString = function(e, t) {
 
 var testURL = 'https://www.qbenben.com/?type=qb';
 
-console.log(getQueryString('type', testURL));//qb
+console.log(getQueryString('type', testURL)); //qb
