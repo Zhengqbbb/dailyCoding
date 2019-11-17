@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-11-17 23:55:36 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-11-17 23:58:27
+ * @Last Modified time: 2019-11-18 00:08:28
  * 获取URL(window.location.search)参数方法
  * 从问号 (?) 开始的 URL（查询部分）
  */
@@ -12,7 +12,7 @@
 /**
  * 获取URL问号传参数方法
  * @param  {} e 目标键值
- * @param  {} t 需要搜索的地方
+ * @param  {} t 需要搜索的地方 || window.location.search
  */
 var getQueryString = function(e, t) {
   var n = new RegExp("(^|\\?|&)" + e + "=([^&]*)(&|$)", "i"),
@@ -20,3 +20,7 @@ var getQueryString = function(e, t) {
     o = t.match(n);
   return null != o ? unescape(o[2]) : null;
 }
+
+var testURL = 'https://www.qbenben.com/?type=qb';
+
+console.log(getQueryString('type', testURL));//qb
