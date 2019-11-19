@@ -2,7 +2,7 @@
  * @Author: QB
  * @Date: 2019-11-14 15:38:27
  * @LastEditTime: 2019-11-14 15:47:10
- * @LastEditors: QB
+ * @LastEditors: qbenben
  * @Description: 021 - 合并两个有序链表（merge-two-sorted-lists）
  * 
  * 将两个有序链表合并为一个新的有序链表并返回。
