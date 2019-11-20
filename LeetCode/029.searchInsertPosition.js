@@ -2,7 +2,7 @@
  * @Author: Qbenben
  * @Date: 2019-11-21 00:30:17
  * @LastEditors: Qbenben
- * @LastEditTime: 2019-11-21 01:04:35
+ * @LastEditTime: 2019-11-21 01:07:47
  * @Description: 029-搜索插入位置（search-insert-position）
  * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。
  * 如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
@@ -69,6 +69,8 @@ console.log(searchInsert_2(testNums, testTarget));
  * @description:解法三：基于本题目对于解法二的二分法优化： 
  * 前7行增加了边界判断
  * while的判断条件变成了小于号
+ * 无符号右移
+ * if的判断条件变成了两个
  * @param {number []} nums   排序数组
  * @param {number}    target 目标值
  * @return: 插入的索引
