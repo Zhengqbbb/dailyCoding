@@ -2,7 +2,7 @@
  * @Author: qbenben 
  * @Date: 2019-08-12 04:16:24 
  * @Last Modified by: qbenben
- * @Last Modified time: 2019-09-09 22:15:42
+ * @Last Modified time: 2019-11-21 11:19:24
  * 排序算法练习
  */
 
@@ -161,7 +161,7 @@ var shellSort = function(arr) {
  * <1>.把长度为n的输入序列分成两个长度为n/2的子序列
  * <2>.对这两个子序列分别采用归并排序；
  * <3>.将两个排序好的子序列合并成一个最终的排序序列。
- * 最佳情况：T(n) = O(n)
+ * 最佳情况：T(n) = O(nlogn)
  * 最差情况：T(n) = O(nlogn)
  * 平均情况：T(n) = O(nlogn)
  * 
@@ -266,3 +266,62 @@ var quickSortThreeWay = function(arr) {
   }
   return [...quickSortThreeWay(left), ...center, ...quickSortThreeWay(right)];
 }
+
+
+/* --------------堆排序--------------- */
+
+var _isArray = function(arr) {
+  return Object.prototype.toString.call(arr).slice(8, -1) === 'Array';
+}
+/**
+ * 维护堆的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。
+ * @param  {number []} arr  数组 
+ * @param  {number} x       数组下标
+ * @param  {number} len     堆的大小
+ */
+var heapify = function(arr, x, len) {
+  if (!_isArray || typeof x !== 'number') {
+    return 'arr is not an Array or x is not a number!';
+  }
+  var l = 2 * x + 1,
+    r = 2 * x + 2,
+    largest = x;
+  if (l < len && arr[l] > arr[largest]) {
+    largest = l;
+  }
+  if (r < len && arr[r] > arr[largest]) {
+    largest = r;
+  }
+  if (largest != x) {
+    arr[x] ^= arr[largest];
+    arr[largest] ^= arr[x];
+    arr[x] ^= arr[largest];
+    heapify(arr, largest, len);
+  }
+}
+/**
+ * 堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
+ * 最佳情况：T(n) = O(n2)
+ * 最差情况：T(n) = O(n2)
+ * 平均情况：T(n) = O(n2)
+ * 堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。
+ * @param  {number []} arr
+ */
+var HeapSort = function(arr) {
+  if (!_isArray(arr)) return 'arr is not a Array';
+  //建堆
+  var heapSize = arr.length;
+  for (var i = Math.floor(heapSize / 2) - 1; i >= 0; i--) {
+    heapify(arr, i, heapSize);
+  }
+  //堆排序
+  for (var j = heapSize - 1; j >= 1; j--) {
+    arr[0] ^= arr[j];
+    arr[j] ^= arr[0];
+    arr[0] ^= arr[j];
+    heapify(arr, 0, --heapSize);
+  }
+  return arr;
+
+}
+console.log(HeapSort(arrTest));
