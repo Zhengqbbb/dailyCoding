@@ -1,5 +1,5 @@
 
-TypeScript基础篇：极客时间TypeScript开发实战（[梁宵](梁宵)）学习笔记。
+TypeScript基础篇：极客时间TypeScript开发实战（[梁宵](https://time.geekbang.org/course/detail/211-108620)）学习笔记。
 ===
 
 ## 01.“类型思维” 
