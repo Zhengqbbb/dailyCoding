@@ -2,7 +2,7 @@
  * @Author: Qbenben
  * @Date: 2019-12-01 22:49:04
  * @LastEditors: Qbenben
- * @LastEditTime: 2019-12-01 23:19:59
+ * @LastEditTime: 2019-12-01 23:21:39
  * @Description: 053-最大子序和（maximum-subarray）
  * 
  * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
@@ -38,7 +38,7 @@ var maxSubArray_1 = function(nums) {
   return result;
 }
 
-var testNums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+var testNums = [-2, 1, -3, 4, -1, 2, 1, -5, 4, -3];
 console.log(maxSubArray_1(testNums));
 
 
