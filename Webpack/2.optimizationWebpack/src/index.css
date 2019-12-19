@@ -1,0 +1,22 @@
+body{
+  background: #000;
+  color: #fff;
+  /* -----------图片压缩  原图：9.28kb。3.02 KiB----------- */
+  background:  url('./favicon.png');
+}
+
+.title{
+  color: pink;
+}
+
+.div{
+  color: yellow;
+}
+
+.div1{
+  color: yellow;
+}
+
+.div2{
+  color: yellow;
+}
