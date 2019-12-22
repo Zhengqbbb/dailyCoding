@@ -110,3 +110,11 @@ new PurgeCssWebpackPlugin({
         'jquery': 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'
       })
 ```
+
+
+## 使用tree-shaking 摇出多余代码
+* 比如我们现在有一个模块cale.js导出加法和减法模块，而现在我们在入口index中只使用了加法模块。将减法代码摇出不计入打包代码中。
+
+
+## 使用DllReferencePlugin对于固定的包单独进行打包，引用。
+* 提升开发效率

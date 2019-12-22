@@ -3,6 +3,6 @@
 //  import './index.css';
 //  render(<h1 className="title"> hello </h1>, document.getElementById('root'))
 
-import $ from 'jquery';
-console.log($);
+// import $ from 'jquery';
+// console.log($);
 
