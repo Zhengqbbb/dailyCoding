@@ -118,3 +118,14 @@ new PurgeCssWebpackPlugin({
 
 ## 使用DllReferencePlugin对于固定的包单独进行打包，引用。
 * 提升开发效率
+
+##  动态加载
+* 使用import语法动态导入类比路由的懒加载 import语法。当我们使用的时候会使用jsonp动态加载文件
+* 实现代码的分割，代码块名字可以在webpack配置中output中使用chunkFilename:进行设置
+
+##  配置多路口文件
+
+
+
+##  打包文件分析工具
+* npm i webpack-bundle-analyzer --save-dev
