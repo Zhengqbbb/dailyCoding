@@ -52,3 +52,11 @@ tsc ./src/index.ts  //编译
 <code>"start": "webpack-dev-server --mode=development --config ./build/webpack.config.js",
 </code><br>
 <code>"build": "webpack --mode=production --config ./build/webpack.config.js",</code>
+
+##  基本类型
+* ES6中有六中基本类型：Boolean，Number，String，Symbol，undefined，null。除此之外还用引用类型：Arrary，Function，Object
+* TS中ES6的基础之上还新增数据类型：void，any，never，元组类型，枚举类型，此外还有很多高级类型玩法
+
+##  类型注解
+* 作用：相当于强类型语法中的类型声明,可以对变量进行约束作用
+* 语法：(变量、函数):type 
