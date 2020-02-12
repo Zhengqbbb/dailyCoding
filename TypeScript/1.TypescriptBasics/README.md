@@ -117,7 +117,7 @@ tsc ./src/index.ts  //编译
 
 <br>
 
-![](https://qbenben-1259133534.cos.ap-shenzhen-fsi.myqcloud.com/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.png)
+<img width="100%" src="https://qbenben-1259133534.cos.ap-shenzhen-fsi.myqcloud.com/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.png"/>
 
 * 总结：首先接口之间是可以相互继承的实现接口的复用，类之间也可以相互继承实现方法和属性的复用，接口是可以通过类来实现的，但是接口只能约束类的共有成员，另外接口也可以抽离出类的成员，抽离的时候可以包括公有私有和受保护成员。
 
