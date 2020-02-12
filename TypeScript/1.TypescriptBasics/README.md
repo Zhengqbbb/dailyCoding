@@ -115,6 +115,25 @@ tsc ./src/index.ts  //编译
 * 类类型接口在实现的过程中必须实现接口的所有属性。接口只能约束类的共有成员。
 * 接口的继承，接口除了可以继承几口之外还可以继承类
 
-<br>![](https://qbenben-1259133534.cos.ap-shenzhen-fsi.myqcloud.com/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.png)
+<br>
+
+![](https://qbenben-1259133534.cos.ap-shenzhen-fsi.myqcloud.com/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.png)
 
 * 总结：首先接口之间是可以相互继承的实现接口的复用，类之间也可以相互继承实现方法和属性的复用，接口是可以通过类来实现的，但是接口只能约束类的共有成员，另外接口也可以抽离出类的成员，抽离的时候可以包括公有私有和受保护成员。
+
+##  12.泛型
+概念：不预先确定的数据类型，具体的类型在使用的时候才能确定。
+* 泛型也可以约束类的成员参数，但是不能约束静态参数
+* 泛型约束：使用一个接口在里面定义成员类型，然后用泛型继承
+```JavaScript
+interface Length{
+  leng: number
+}
+function log<T extends Length>(value: T):T{
+  console.log(value, value.length)
+  return value
+}
+```
+
+* 好处：
+<p>1.函数和类可以轻松地支持多种类型，增强程序的可扩展性<br>2.不必写多条函数的重载，冗长的联合类型声明，增强程序的可读性<br>3.灵活控制类型之间的约束</p>
