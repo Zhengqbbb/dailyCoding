@@ -20,4 +20,19 @@ interface Log<T = string> {
   (value: T): T;
 }
 
-let myLog: Log<number> = log; 
+//let myLog: Log<number> = log;
+
+
+//泛型约束类的成员
+class Log<T>{
+  run(value: T){
+    console.log(value);
+    return value;
+  }
+}
+//实例化的过程中显示传入类的类型
+let log1 = new Log<number>()
+log1.run(123);
+let log2 = new Log();
+//再不传入参数，就会变成any类型
+log2.run('123');
