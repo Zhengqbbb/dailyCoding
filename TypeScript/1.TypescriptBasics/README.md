@@ -150,3 +150,4 @@ function log<T extends Length>(value: T):T{
 ##  16.条件类型
 * T extends U ? X : Y
 * 如果类型T可以U，结果就是X类型，否则就是Y类型
+* Exclude<T, U> 从类型T从过滤
