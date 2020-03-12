@@ -97,4 +97,35 @@ function deepClone(source) {
   return targetObj;
 }
 
-//console.log(deepClone(obj))
+console.log(deepClone(obj))
+
+/**
+ * @description: 深拷贝遇到正则或者日期类型时实现的深拷贝
+ * @param {obj} Object 
+ * @return: 
+ */
+function deepClone_1(obj, hash = new WeakMap()){
+  if(obj instanceof RegExp)return new RegExp(obj);
+  if(obj instanceof Date) return new Date(obj);
+  if(obj === null||typeof obj !== 'object'){
+    //如果不是复杂数据类型，直接返回
+    return obj;
+  }
+  if(hash.has(obj)){
+    return hash.get(obj);
+  }
+  /**
+   * 如果obj是数组，那么obj.constructor 是 [Function: Array]
+   * 如果obj是对象，那么obj.constructor 是 [Function: Object]
+   */
+  let t = new obj.constructor();
+  for(let key in obj){
+    //递归
+    if(obj.hasOwnProperty(key)){
+      t[key] = deepClone_1(obj[key], hash);
+    }
+  }
+  return t;
+}
+
+console.log(deepClone_1(obj));
