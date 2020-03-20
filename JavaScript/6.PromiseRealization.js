@@ -245,3 +245,193 @@ class MyPromise {
     );
   }
 }
+
+
+/* ---------------------------2020.3.17Promise实现------------- */
+//宏
+const PENDING = 'PENGDING'; //等待态
+const FULFILLED = 'FULFILLED'; //成功态
+const REJECTED = 'REJECTED'; //失败态
+/**
+ * @description: 专门处理x的状态
+ * @param {x} promise2
+ * @param {x} x
+ * @param {x} resolve
+ * @param {x} reject
+ */
+const resolvePromise = (promise2, x, resolve, reject) => {
+  if (promise2 === x) {
+    return reject(new TypeError('返回同一个promise，我不可能等待我自己'))
+  }
+  /* ------判断x的状态 判断x是不是一个promise----- */
+  //1.先判断是不是对象或者函数
+  if ((typeof x === 'object' && x !== null) || typeof x === 'function') {
+    let called; //为了考虑别人的promise不健壮，需要自己判断一下，如果调用成功就不能失败，如果调用失败就不能成功
+    //有没有then方法
+    try {
+      let then = x.then; //取出then ， 如果这个then抛出异常时采用defineProperty
+      if (typeof then === 'function') {
+        //判断then是不是一个函数，如果then不是一个函数，说明不是promise
+        //只能认定他是一个promise
+        then.call(x, y => { //如果y也是一个promise，就继续递归
+          //防止别人多次调用resolve和reject添加一个锁
+          if (called) return;
+          called = true;
+          resolvePromise(promise2, y, resolve, reject)
+        }, r => {
+          if (called) return;
+          called = true;
+          reject(r);
+        })
+      } else {
+        resolve(x)
+      }
+    } catch (e) {
+      if (called) return;
+      called = true;
+      reject(e)
+    }
+  } else {
+    //肯定不是promise
+    resolve(x)
+  }
+}
+class Promise {
+  constructor(executor) {
+    this.status = 'PENGDING';
+    //把值或者原因挂载到实例上
+    this.value = undefined;
+    this.reason = undefined;
+    //定义两个数组事件池，然后将成功和失败的回调放入其中，订阅起来，当then的时候触发
+    this.onResolveCallbacks = [];
+    this.onRejectedCallbacks = [];
+    let resolve = (value) => {
+      //如果用户传进来一个promise就一直解析，解析出一个普通值
+      if (value instanceof Promise) {
+        return value.then(resolve, reject)
+      }
+      if (this.status === PENGDING) {
+        this.status = FULFILLED;
+        this.value = value;
+        //发布
+        this.onResolveCallbacks.forEach(fn => fn())
+      }
+    }
+    let rejected = (reason) => {
+      if (this.status === PENGDING) {
+        this.status = REJECTED;
+        this.reason = reason;
+        //发布
+        this.onRejectedCallbacks.forEach(fn => fn())
+      }
+    }
+    //executor执行的时候 需要传入两个参数，给用户来改变状态的
+    //当前如果抛出错误的话就会被捕获
+    //只能捕获同步异常
+    try {
+      executor(resolve, rejected);
+    } catch (e) {
+      rejected(e)
+    }
+  }
+  //then方法的实现
+  //这里的then可以理解为订阅，而用户调用resolve和reject的时候相当于发布
+  then(onFulfilled, onRejected) {
+    //当用户不传参的时候，直接穿透给下一个,注意reject不传参的话应该抛出错误，不然会作为下一次成功的参数
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : val => val;
+    onRejected = typeof onRejected === 'function' ? onRejected : err => { throw err };
+    //链式调用时要返回一个新的promise
+    /* 链式调用的三种情况：
+     * 1.如果返回的是一个promise，那么会让这个promise执行，并且采用他的状态，将成功或者失败的结果传递给外层的的下一个then中
+     * 2.如果返回的是一个普通值则会将这个值作为下一次then的成功回调中
+     * 3.抛出一个异常用
+     */
+    //x 为普通值的话，x就会作为下一个then中的成功态的参数
+    let promise2 = new Promise((resolve, rejected) => {
+      if (this.status === FULFILLED) {
+        //setTimeout确保 promise2 new出来过后再作为参数传入resolvePromise
+        setTimeout(() => {
+          try {
+            let x = onFulfilled(this.value);
+            resolvePromise(promise2, x, resolve, rejected)
+          } catch (e) {
+            rejected(e)
+          }
+        }, 0)
+      }
+      if (this.status === REJECTED) {
+        setTimeout(() => {
+          try {
+            let x = onRejected(this.reason);
+            resolvePromise(promise2, x, resolve, rejected)
+          } catch (e) {
+            rejected(e)
+          }
+        }, 0)
+      }
+      //订阅各种异步函数
+      if (this.status === PENGDING) {
+        //利用AOP思想往代码里面加东西
+        this.onResolveCallbacks.push(() => {
+          setTimeout(() => {
+            try {
+              let x = onFulfilled(this.value)
+              resolvePromise(promise2, x, resolve, rejected)
+            } catch (e) {
+              rejected(e)
+            }
+          }, 0)
+        })
+        this.onRejectedCallbacks.push(() => {
+          setTimeout(() => {
+            try {
+              let x = onRejected(this.reason)
+              resolvePromise(promise2, x, resolve, rejected)
+            } catch (e) {
+              rejected(e)
+            }
+          }, 0);
+        })
+      }
+    })
+
+    return promise2;
+  }
+
+  //catch方法的实现:没有成功的回调
+  catch (errCallback) {
+    return this.then(null, errCallback)
+  }
+}
+
+//---------------------------Promise.all的实现-------------
+const isPormise = value => {
+  if ((typeof value === 'object' && value !== null) || typeof value === 'function') {
+    return value.then === 'function';
+  }
+  return false;
+}
+Promise.all = function(promises) {
+  return new Promise((resolve, reject) => {
+    let arr = [];
+    let i = 0;
+    let processData = (index, data) => {
+      arr[index] = data;
+      if (++i === promises.length) {
+        resolve(arr)
+      }
+    }
+    for (let i = 0; i < arpromisesr.length; i++) {
+      let current = promises[i];
+      if (isPormise(current)) {
+        current.then(data => {
+          processData(i, data)
+        }, reject)
+      } else {
+        processData(i, current)
+      }
+    }
+  })
+
+}
+module.export = Promise;
