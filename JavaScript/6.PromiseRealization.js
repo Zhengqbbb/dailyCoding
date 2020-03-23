@@ -407,7 +407,7 @@ class Promise {
 //---------------------------Promise.all的实现-------------
 const isPormise = value => {
   if ((typeof value === 'object' && value !== null) || typeof value === 'function') {
-    return value.then === 'function';
+    return typeof value.then === 'function';
   }
   return false;
 }
@@ -433,5 +433,17 @@ Promise.all = function(promises) {
     }
   })
 
+}
+
+Promise.race = fucntion(promises) {
+  return new Promise(function(resolve, rejected) {
+    for (let i; i < promises.length; i++) {
+      Promise.resolve(promises[i]).then(function(value) {
+        return resolve(value)
+      }, function(reason) {
+        return reject(reason)
+      })
+    }
+  })
 }
 module.export = Promise;
