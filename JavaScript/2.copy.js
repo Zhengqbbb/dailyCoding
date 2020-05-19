@@ -104,14 +104,14 @@ console.log(deepClone(obj))
  * @param {obj} Object 
  * @return: 
  */
-function deepClone_1(obj, hash = new WeakMap()){
-  if(obj instanceof RegExp)return new RegExp(obj);
-  if(obj instanceof Date) return new Date(obj);
-  if(obj === null||typeof obj !== 'object'){
+function deepClone_1(obj, hash = new WeakMap()) {
+  if (obj instanceof RegExp) return new RegExp(obj);
+  if (obj instanceof Date) return new Date(obj);
+  if (obj === null || typeof obj !== 'object') {
     //如果不是复杂数据类型，直接返回
     return obj;
   }
-  if(hash.has(obj)){
+  if (hash.has(obj)) {
     return hash.get(obj);
   }
   /**
@@ -119,9 +119,9 @@ function deepClone_1(obj, hash = new WeakMap()){
    * 如果obj是对象，那么obj.constructor 是 [Function: Object]
    */
   let t = new obj.constructor();
-  for(let key in obj){
+  for (let key in obj) {
     //递归
-    if(obj.hasOwnProperty(key)){
+    if (obj.hasOwnProperty(key)) {
       t[key] = deepClone_1(obj[key], hash);
     }
   }
