@@ -24,5 +24,5 @@ var lengthOfLastWord_1 = function(s) {
   if (result.length >= 2 && result[result.length - 1] === '') {
     return result[result.length - 2].length
   }
-  return result[result.length - 1].length;
+  return result[result.length - 1].length
 };
